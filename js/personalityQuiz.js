@@ -284,7 +284,7 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
       $content = $('<div>', { 'class': classes('title-card-wrapper') });
       if (self.params.titleScreen.showTitle) {
         $title = $('<h2>', {
-          html: self.getTitle(),
+          html: (self.extras.metadata && self.extras.metadata.title) ? self.extras.metadata.title : 'Personality Quiz',
           'class': classes('title')
         });
       }
@@ -1095,7 +1095,7 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
    * @return {string} title.
    */
   PersonalityQuiz.prototype.getTitle = function () {
-    return (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Personality Quiz';
+    return H5P.createTitle((this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Personality Quiz');
   };
 
   return PersonalityQuiz;
