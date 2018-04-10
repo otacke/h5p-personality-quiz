@@ -6,24 +6,11 @@
         "expanded": true,
         "fields": [
             {
-                "name": "title",
-                "type": "group",
-                "label": "Title",
-                "expanded": true,
-                "fields": [
-                    {
-                        "name": "text",
-                        "type": "text",
-                        "label": "Title"
-                    },
-                    {
-                        "name": "display",
-                        "type": "boolean",
-                        "label": "Display Title",
-                        "description": "Wether or not to show the title as a headline at the start of the personality quiz.",
-                        "default": true
-                    }
-                ]
+                "name": "showTitle",
+                "type": "boolean",
+                "label": "Display Title",
+                "description": "Wether or not to show the title as a headline at the start of the personality quiz.",
+                "default": true
             },
             {
                 "name": "image",

@@ -14,8 +14,11 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
     @param {number} id
     @constructor
   */
-  function PersonalityQuiz(params, id) {
+  function PersonalityQuiz(params, id, extras) {
     var self = this;
+
+    self.params = params;
+    self.extras = extras;
 
     self.classPrefix = 'h5p-personality-quiz-';
     self.resultAnimation = params.resultScreen.animation;
@@ -185,6 +188,7 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
       @return {jQuery}
     */
     function createQuiz(quiz, data) {
+      var self = this;
       var $container, $slides, $bar, $title, $question, $canvas, $result;
 
       $container = $('<div>', { 'class': classes('container') });
@@ -278,10 +282,15 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
 
       $card = $('<div>', { 'class': classes('title-card', 'slide', 'background') });
       $content = $('<div>', { 'class': classes('title-card-wrapper') });
-      $title = $('<h2>', {
-        html: data.title.text,
-        'class': classes('title')
-      });
+      if (self.params.titleScreen.showTitle) {
+        $title = $('<h2>', {
+          html: self.getTitle(),
+          'class': classes('title')
+        });
+      }
+      else {
+        $title = $('<div>');
+      }
 
       if (hasImage) {
         path = _getPath(data.image.file.path);
@@ -1079,6 +1088,15 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
 
   PersonalityQuiz.prototype = Object.create(EventDispatcher);
   PersonalityQuiz.prototype.constructor = PersonalityQuiz;
+
+  /**
+   * Get the content type title.
+   *
+   * @return {string} title.
+   */
+  PersonalityQuiz.prototype.getTitle = function () {
+    return (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Personality Quiz';
+  };
 
   return PersonalityQuiz;
 })(H5P.jQuery, H5P.EventDispatcher);
