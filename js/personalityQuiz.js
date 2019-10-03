@@ -349,7 +349,7 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
 
       createAnswerButton = images ? createImageAnswer : createAnswer;
 
-      $answer = createAnswerButton(question.answers, quiz.answerListener);
+      $answer = createAnswerButton(question.answers, quiz.answerListener, question.weight || 1);
 
       $slide.append($answer);
 
@@ -422,7 +422,7 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
       @param {listenerCallback} listener
       @return {jQuery}
     */
-    function createImageAnswer(answers, listener) {
+    function createImageAnswer(answers, listener, weight) {
       var $wrapper, $answers, $row, $elements;
 
       var columns = getNumColumns();
@@ -438,7 +438,8 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
 
         $answer = $('<div>', {
           'class': classes('column', 'columns-' + String(columns)),
-          'data-personality': answer.personality
+          'data-personality': answer.personality,
+          'data-score': weight * (answer.score || 1)
         });
 
         $button = createButton('div', {
@@ -477,7 +478,7 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
       @param {listenerCallback} listener
       @return {jQuery}
     */
-    function createAnswer(answers, listener) {
+    function createAnswer(answers, listener, weight) {
       var $wrapper  = $('<div>', { 'class': classes('answers-wrapper') });
       var $answers  = $('<ul>',  { 'class': classes('answers')         });
 
@@ -486,6 +487,7 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
       answers.forEach(function (answer) {
         var $answer = createButton('li', {
           'data-personality': answer.personality,
+          'data-score': weight * (answer.score || 1),
           'class': classes('button', 'answer'),
           'html': answer.text
         });
@@ -640,14 +642,14 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
       @param {jQuery} $button
       @param {Object[]} personalities The list of personalities associated with the $button
     */
-    function animatedButtonListener($button, personalities) {
+    function animatedButtonListener($button, personalities, weight) {
       var animationClass = prefix('button-animate');
 
       $button.addClass(animationClass);
       $button.on('animationend', function () {
         $(this).removeClass(animationClass);
         $(this).off('animationend');
-        self.trigger('personality-quiz-answer', personalities);
+        self.trigger('personality-quiz-answer', {personalities: personalities, weight: weight});
       });
     }
 
@@ -657,8 +659,8 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
       @param {jQuery}
       @param {Object[]} personalities The personalities associated with the $button
     */
-    function nonAnimatedButtonListener($button, personalities) {
-      self.trigger('personality-quiz-answer', personalities);
+    function nonAnimatedButtonListener($button, personalities, weight) {
+      self.trigger('personality-quiz-answer', {personalities: personalities, weight: weight});
     }
 
 
@@ -969,7 +971,7 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
     */
     self.answerListener = function (event) {
       var $target, $button;
-      var isImage, isButton, buttonListener, personalities;
+      var isImage, isButton, buttonListener, personalities, score;
 
       $target = $(event.target);
       $button = $target;
@@ -983,11 +985,12 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
       $target = (isButton || isImage) ? $target.parent() : $target;
 
       personalities = $target.attr('data-personality');
+      score = parseInt($target.attr('data-score'), 10);
 
       if (personalities) {
         buttonListener  = animation ? animatedButtonListener : nonAnimatedButtonListener;
 
-        buttonListener($button, personalities);
+        buttonListener($button, personalities, score);
 
         $target.parent(prefix('answers')).off('click');
       }
@@ -1019,13 +1022,13 @@ H5P.PersonalityQuiz = (function ($, EventDispatcher) {
     self.on('personality-quiz-answer', function (event) {
       var answers;
 
-      if (event !== undefined && event.data !== undefined) {
-        answers = event.data.split(', ');
+      if (event !== undefined && event.data !== undefined && event.data.personalities !== undefined) {
+        answers = event.data.personalities.split(', ');
 
         answers.forEach(function (answer) {
           self.personalities.forEach(function (personality) {
             if (personality.name === answer) {
-              personality.count++;
+              personality.count += (parseInt(event.data.weight, 10) || 1);
             }
           });
         });
