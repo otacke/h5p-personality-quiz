@@ -1,0 +1,185 @@
+{
+  "semantics": [
+    {
+      "label": "Title Screen",
+      "fields": [
+        {
+          "label": "Title",
+          "fields": [
+            {
+              "label": "Title"
+            },
+            {
+              "label": "Display Title",
+              "description": "Wether or not to show the title as a headline at the start of the personality quiz."
+            }
+          ]
+        },
+        {
+          "label": "Optional: Image",
+          "fields": [
+            {
+              "label": "File"
+            },
+            {
+              "label": "Alt text",
+              "description": "Alternative text if the browser is unable to load the image."
+            }
+          ]
+        },
+        {
+          "label": "Skip",
+          "description": "Select if you want the quiz to start on the first question instead of the title screen."
+        }
+      ]
+    },
+    {
+      "label": "Result screen",
+      "fields": [
+        {
+          "label": "Animation",
+          "description": "The Wheel of Fortune animation will only use the images associated with personalities if ALL personalities has an image associated with them.",
+          "options": [
+            {
+              "label": "None"
+            },
+            {
+              "label": "Fade in"
+            },
+            {
+              "label": "Wheel of Fortune"
+            }
+          ]
+        },
+        {
+          "label": "Display personality title?"
+        },
+        {
+          "label": "Display description?"
+        },
+        {
+          "label": "Personality Image Position",
+          "description": "Choose how to display the image, if there is any, of the result personality. Background will fill the entire H5P container and center the image. Inline will put the image as an image element between the result personality name and description.",
+          "options": [
+            {
+              "label": "Background"
+            },
+            {
+              "label": "Inline"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Personality",
+      "entity": "personality",
+      "field": {
+        "label": "Personality",
+        "fields": [
+          {
+            "label": "Personality name",
+            "description": "The personality name will be used to associate answers with their respective personalities."
+          },
+          {
+            "label": "Description"
+          },
+          {
+            "label": "Optional: Image",
+            "fields": [
+              {
+                "label": "Image",
+                "description": "An image to display on the result screen."
+              },
+              {
+                "label": "Alt text",
+                "description": "Alternative text if the browser is unable to load the image."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Questions",
+      "entity": "question",
+      "field": {
+        "label": "Question",
+        "fields": [
+          {
+            "label": "Question"
+          },
+          {
+            "label": "Optional: Image",
+            "description": "Image displayed at the top of the screen above or below the question text.",
+            "fields": [
+              {
+                "label": "File"
+              },
+              {
+                "label": "Alt text",
+                "description": "Alternative text if the browser is unable to load the image."
+              }
+            ]
+          },
+          {
+            "label": "Answers",
+            "entity": "answer",
+            "field": {
+              "label": "Answer",
+              "fields": [
+                {
+                  "label": "text"
+                },
+                {
+                  "label": "Personalities",
+                  "description": "A comma separated list of personality names associated with this answer."
+                },
+                {
+                  "description": "Images associated with answers will not show up unless all answers associated with a question has an image attached.",
+                  "label": "Optional: Image",
+                  "fields": [
+                    {
+                      "label": "File"
+                    },
+                    {
+                      "label": "Alt text",
+                      "description": "Alternative text if the browser is unable to load the image."
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Start",
+      "default": "Start",
+      "description": "Text displayed on the start quiz button on the title card."
+    },
+    {
+      "label": "Progress text",
+      "default": "@question of @total",
+      "description": "Progress text, variables available: @question and @total. Example: '@question of @total'"
+    },
+    {
+      "label": "Retake",
+      "default": "Retake the quiz",
+      "description": "Retake text"
+    },
+    {
+      "label": "Animation",
+      "description": "Uncheck to turn off all animation"
+    },
+    {
+      "label": "Button Accent",
+      "description": "Change the color of the button borders and the animation color fill"
+    },
+    {
+      "label": "Progressbar Color",
+      "description": "Determines the color of the progress bar"
+    }
+  ]
+}

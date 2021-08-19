@@ -246,6 +246,7 @@
         "label": "Start",
         "name": "startText",
         "type": "text",
+        "common": true,
         "default": "Start",
         "description": "Text displayed on the start quiz button on the title card."
     },
@@ -253,6 +254,7 @@
         "label": "Progress text",
         "name": "progressText",
         "type": "text",
+        "common": true,
         "default": "@question of @total",
         "description": "Progress text, variables available: @question and @total. Example: '@question of @total'"
     },
@@ -260,6 +262,7 @@
         "name": "retakeText",
         "label": "Retake",
         "type": "text",
+        "common": true,
         "default": "Retake the quiz",
         "description": "Retake text"
     },
