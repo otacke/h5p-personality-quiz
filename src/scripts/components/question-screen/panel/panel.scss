@@ -1,0 +1,49 @@
+@import "@styles/main";
+
+.h5p-personality-quiz-panel {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 4rem;
+  width: 100%;
+
+  .h5p-personality-quiz-panel-image {
+    max-height: 10rem;
+    object-fit: cover;
+  }
+
+  .h5p-personality-quiz-question {
+    font-weight: bold;
+    padding: 1em;
+    text-align: center;
+  }
+
+  .h5p-personality-quiz-answer-options {
+    display: grid;
+    margin: 0;
+    padding: 0;
+
+    .h5p-personality-quiz-answer-list-item {
+      list-style: none;
+    }
+
+    &.mode-image {
+      grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+      gap: 1rem;
+
+      .h5p-personality-quiz-answer-list-item {
+        height: 100%;
+      }
+    }
+
+    &.mode-text {
+      gap: 0.5rem;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.display-none {
+    display: none;
+  }
+}
