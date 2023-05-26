@@ -85,7 +85,6 @@ export default class QuestionScreen {
     });
 
     this.progressBar.setProgress(1);
-    this.panels[0].show();
   }
 
   /**
@@ -98,9 +97,32 @@ export default class QuestionScreen {
 
   /**
    * Show.
+   * @param {object} [params={}] Parameters.
+   * @param {object[]} [params.answersGiven] Previously given answers.
    */
-  show() {
+  show(params = {}) {
     this.dom.classList.remove('display-none');
+
+    params.answersGiven = params.answersGiven ?? [];
+    const questionIndex = params.answersGiven.length;
+
+    this.panels.forEach((panel, index) => {
+      if (
+        this.params.appearance === 'classic' &&
+        index === questionIndex
+      ) {
+        panel.show();
+      }
+      else if (
+        this.params.appearance === 'chat' &&
+        index <= questionIndex
+      ) {
+        panel.show({ skipAnimation: index !== questionIndex });
+      }
+      else {
+        panel.hide();
+      }
+    });
   }
 
   /**
@@ -138,22 +160,7 @@ export default class QuestionScreen {
       const optionChosen = (answer ?? {}).option;
 
       panel.reset({ optionChosen: optionChosen });
-
-      if (
-        this.params.appearance === 'classic' &&
-        index === questionIndex
-      ) {
-        panel.show();
-      }
-      else if (
-        this.params.appearance === 'chat' &&
-        index <= questionIndex
-      ) {
-        panel.show({ skipAnimation: index !== questionIndex });
-      }
-      else {
-        panel.hide();
-      }
+      panel.hide();
     });
   }
 

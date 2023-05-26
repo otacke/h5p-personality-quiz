@@ -218,7 +218,7 @@ export default class Content {
    * Handle title screen closed.
    */
   handleTitleScreenClosed() {
-    this.questionScreen.show();
+    this.questionScreen.show({ answersGiven: this.answersGiven });
     this.questionScreen.focus();
 
     Globals.get('resize')();
@@ -327,7 +327,7 @@ export default class Content {
       });
     }
     else if (this.answersGiven.length !== this.params.questions.length) {
-      this.questionScreen.show();
+      this.questionScreen.show({ answersGiven: this.answersGiven });
     }
     else {
       this.handleCompleted({ isFromReset: true });
