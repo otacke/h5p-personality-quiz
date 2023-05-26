@@ -1,5 +1,4 @@
 import Dictionary from '@services/dictionary';
-import Globals from '@services/globals';
 import Util from '@services/util';
 import Panel from './panel/panel';
 import ProgressBar from './progress-bar/progress-bar';
@@ -54,7 +53,7 @@ export default class QuestionScreen {
     // Panels
     this.panels = this.params.questions.map((question, questionIndex) => {
       const panel = new Panel({
-        mode: 'TODO',
+        appearance: this.params.appearance,
         image: question.image,
         questionText: question.text,
         answerOptions: question.answers,
@@ -140,8 +139,17 @@ export default class QuestionScreen {
 
       panel.reset({ optionChosen: optionChosen });
 
-      if (index === questionIndex) {
+      if (
+        this.params.appearance === 'classic' &&
+        index === questionIndex
+      ) {
         panel.show();
+      }
+      else if (
+        this.params.appearance === 'chat' &&
+        index <= questionIndex
+      ) {
+        panel.show({ skipAnimation: index !== questionIndex });
       }
       else {
         panel.hide();
@@ -160,11 +168,11 @@ export default class QuestionScreen {
       this.callbacks.onCompleted();
     }
     else {
-      this.panels[panelIndex].hide();
+      if (this.params.appearance === 'classic') {
+        this.panels[panelIndex].hide();
+      }
       this.panels[panelIndex + 1].show();
       this.panels[panelIndex + 1].focus();
     }
-
-    Globals.get('resize')();
   }
 }

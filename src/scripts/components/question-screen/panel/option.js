@@ -8,7 +8,7 @@ export default class Option {
    * Question screen.
    * @class
    * @param {object} [params={}] Parameters.
-   * @param {string} [params.style='plain'] Style 'plain' or 'chat'.
+   * @param {string} [params.appearance='classic'] Appearance, 'classic', 'chat'.
    * @param {string} [params.mode='text'] Mode 'text' or 'image'.
    * @param {string} [params.text] Text for option.
    * @param {object} [params.image={}] Image data.
@@ -18,7 +18,7 @@ export default class Option {
    */
   constructor(params = {}, callbacks = {}) {
     this.params = Util.extend({
-      style: 'plain',
+      appearance: 'classic',
       mode: 'text',
       text: '\u3164', // Invisible but has height.
       image: {}
@@ -29,6 +29,10 @@ export default class Option {
       onCompleted: () => {}
     }, callbacks);
 
+    if (this.params.appearance === 'chat') {
+      this.params.animation = false;
+    }
+
     this.buildDOM();
   }
 
@@ -38,6 +42,7 @@ export default class Option {
   buildDOM() {
     this.dom = document.createElement('div');
     this.dom.classList.add('h5p-personality-quiz-answer-option');
+    this.dom.classList.add(`appearance-${this.params.appearance}`);
     if (this.params.mode === 'image') {
       this.dom.classList.add('has-image');
     }

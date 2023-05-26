@@ -31,6 +31,12 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
       personalitiesGroup: {
         personalities: []
       },
+      visual: {
+        isAnimationOn: true,
+        appearance: 'classic',
+        colorButton: '#1a73d9',
+        colorProgressBar: '#1a73d9'
+      },
       l10n: {
         noQuestions: 'It seems that there is no valid question set. Try checking for valid personality names.',
         noPersonalities: 'It seems that there are not enough valid personalities set. Try checking for missing names or duplicate names.',
@@ -104,6 +110,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
     dom.classList.add('h5p-personality-quiz-main');
 
     this.content = new Content({
+      appearance: this.params.visual.appearance,
       previousState: this.previousState,
       personalities: this.params.personalities,
       questions: this.params.questions,

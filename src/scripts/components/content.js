@@ -79,6 +79,7 @@ export default class Content {
     // Question screen
     this.questionScreen = new QuestionScreen(
       {
+        appearance: this.params.appearance,
         questions: this.params.questions,
         colorProgressBar: this.params.colorProgressBar,
         isAnimationOn: this.params.isAnimationOn

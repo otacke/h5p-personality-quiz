@@ -174,12 +174,26 @@
           "description": "Uncheck to turn off all animations."
         },
         {
+          "label": "Visual appearance",
+          "description": "Set what the overall appearance should be like.",
+          "options": [
+            {
+              "label": "Classic"
+            },
+            {
+              "label": "Chat"
+            }
+          ]
+        },
+        {
           "label": "Base color",
-          "description": "Set the base color that will determine the color for the buttons, the button fill animations and some other visual elements."
+          "description": "Set the base color that will determine the color for the buttons, the button fill animations and some other visual elements.",
+          "default": "#1a73d9"
         },
         {
           "label": "Progressbar Color",
-          "description": "Set the color of the progress bar."
+          "description": "Set the color of the progress bar.",
+          "default": "#1a73d9"
         }
       ]
     },

@@ -179,7 +179,7 @@
           "name": "question",
           "type": "group",
           "label": "Question",
-          "fields":[
+          "fields": [
             {
               "name": "text",
               "type": "text",
@@ -212,7 +212,7 @@
               "label": "Answers",
               "importance": "high",
               "entity": "answer",
-              "min":2,
+              "min": 2,
               "field": {
                 "name": "answer",
                 "type": "group",
@@ -246,13 +246,13 @@
                         "name": "file",
                         "type": "image",
                         "label": "Image",
-                        "description": "Optional image. All options for this question need an image in order to show up."
+                        "description": "Optional image. All options for this question need an image in order to show up. No images will be shown in chat mode."
                       },
                       {
                         "name": "alt",
                         "type": "text",
                         "label": "Alternative text",
-                        "description":" Alternative text for screen readers."
+                        "description": " Alternative text for screen readers."
                       }
                     ]
                   }
@@ -340,6 +340,23 @@
         "label": "Show animations",
         "default": true,
         "description": "Uncheck to turn off all animations."
+      },
+      {
+        "name": "appearance",
+        "type": "select",
+        "label": "Visual appearance",
+        "description": "Set what the overall appearance should be like.",
+        "default": "classic",
+        "options": [
+          {
+            "value": "classic",
+            "label": "Classic"
+          },
+          {
+            "value": "chat",
+            "label": "Chat"
+          }
+        ]
       },
       {
         "name": "colorButton",
