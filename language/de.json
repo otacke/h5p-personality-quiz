@@ -111,7 +111,7 @@
                       "fields": [
                         {
                           "label": "Bild",
-                          "description": "Optionales Bild. Alle Optionen für diese Frage benötigen ein Bild, damit sie angezeigt werden.",
+                          "description": "Optionales Bild. Alle Optionen für diese Frage benötigen ein Bild, damit sie angezeigt werden."
                         },
                         {
                           "label": "Alternativer Text",
