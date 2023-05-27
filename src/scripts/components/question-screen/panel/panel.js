@@ -159,14 +159,14 @@ export default class Panel {
 
       window.setTimeout(() => {
         this.questionText.innerText = this.params.questionText;
-        this.questionText.scrollIntoView(false);
+        this.questionText.scrollIntoView({ behavior: 'smooth' });
 
         window.setTimeout(() => {
           this.optionWrapper.classList.remove('display-none');
           Globals.get('resize')();
           if (params.focus) {
             window.setTimeout(() => {
-              this.focus();
+              this.focus({ scrollIntoView: true });
             }, 50); // Prevent jumping if focus called before resize
           }
 
