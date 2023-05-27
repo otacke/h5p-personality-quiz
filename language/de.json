@@ -1,0 +1,267 @@
+{
+  "semantics": [
+    {
+      "label": "Zeige Titelbildschirm",
+      "description": "Wenn gewählt, wird zu Beginn ein Titelbildschirm eingeblendet."
+    },
+    {
+      "label": "Titelbildschirm",
+      "fields": [
+        {
+          "label": "Einleitung",
+          "default": "<p style=\"text-align: center;\"></p>"
+        },
+        {
+          "label": "Titelbildschirm-Medium"
+        }
+      ]
+    },
+    {
+      "label": "Persönlichkeitstypen",
+      "fields": [
+        {
+          "label": "Persönlichkeitstyp",
+          "widgets": [
+            {
+              "label": "Vorgabewert"
+            }
+          ],
+          "entity": "Persönlichkeitstyp",
+          "field": {
+            "label": "Persönlichkeitstyp",
+            "fields": [
+              {
+                "label": "Bezeichnung des Persönlichkeitstyps",
+                "description": "Die Bezeichnung wird später benutzt, um Antworten den jeweiligen Persönlichkeitstypen zuzuordnen."
+              },
+              {
+                "label": "Beschreibung"
+              },
+              {
+                "label": "Bild",
+                "fields": [
+                  {
+                    "label": "Bild",
+                    "description": "Optionales Bild, das auf dem Ergebnisbildschirm angezeigt werden soll."
+                  },
+                  {
+                    "label": "Alternativer Text",
+                    "description": "Alternativer Text für Bildschirmleser."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Dummy"
+        }
+      ]
+    },
+    {
+      "label": "Fragen",
+      "fields": [
+        {
+          "label": "Fragen",
+          "widgets": [
+            {
+              "label": "Vorgabewert"
+            }
+          ],
+          "entity": "Frage",
+          "field": {
+            "label": "Frage",
+            "fields": [
+              {
+                "label": "Fragetext"
+              },
+              {
+                "label": "Bild",
+                "fields": [
+                  {
+                    "label": "Bild",
+                    "description": "Optionales Bild, das vor dem Fragetext angezeigt wird."
+                  },
+                  {
+                    "label": "Alternativer Text",
+                    "description": "Alternativer Text für Bildschirmleser."
+                  }
+                ]
+              },
+              {
+                "label": "Antworten",
+                "entity": "Antwort",
+                "field": {
+                  "label": "Antwort",
+                  "fields": [
+                    {
+                      "label": "Text der Antwortoption"
+                    },
+                    {
+                      "label": "Persönlichkeitstypen",
+                      "description": "Eine durch ein Komma getrennte Liste von Bezeichnungen für Persönlichkeitstypen, die mit dieser Antwort verknüpft sind.",
+                      "importantDescription": {
+                        "description": "<ul><li>Füge die Bezeichnung eines Persönlichkeitstyps ein, dem +1 Punkte zugeordnet werden, wenn die Option gewählt wird.</li><li>Du kannst eine andere Punktzahl inklusive negativer Werte angeben, indem du zunächst ein Gleichheitszeichen (=) anhängst und dann die Punktzahl.</li><li>Bezeichnungen für Persönlichkeitstypen müssen durch ein Komma (,) voneinander getrennt werden.</li></ul>"
+                      }
+                    },
+                    {
+                      "label": "Bild",
+                      "fields": [
+                        {
+                          "label": "Bild",
+                          "description": "Optionales Bild. Alle Optionen für diese Frage benötigen ein Bild, damit sie angezeigt werden.",
+                          "example": "Apfel, Mango=4, Erdbeere=-1"
+                        },
+                        {
+                          "label": "Alternativer Text",
+                          "description": "Alternativer Text für Bildschirmleser."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "label": "Dummy"
+        }
+      ]
+    },
+    {
+      "label": "Ergebnisbildschirm",
+      "fields": [
+        {
+          "label": "Animation",
+          "description": "Die Animation für das Glücksrad zeigt nur Bilder, wenn allen Persönlichkeitstypen ein Bild zugeordnet wurde.",
+          "options": [
+            {
+              "label": "Keine"
+            },
+            {
+              "label": "Einblenden"
+            },
+            {
+              "label": "Glücksrad"
+            }
+          ]
+        },
+        {
+          "label": "Zeige die Persönlichkeitsbezeichnung"
+        },
+        {
+          "label": "Zeige die Beschreibung"
+        },
+        {
+          "label": "Position des Bildes",
+          "description": "Wähle, ob das dem Persönlichkeitstyp zugeordnete Bild im Hintergrund dargestellt werden soll oder eingebunden zwischen Persönlichkeitsbezeichnung und -beschreibung.",
+          "options": [
+            {
+              "label": "Hintergrund"
+            },
+            {
+              "label": "Eingebunden"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Visuelles",
+      "fields": [
+        {
+          "label": "Zeige animationen",
+          "description": "Wähle ab, um alle Animationen auszuschalten."
+        },
+        {
+          "label": "Zeige Fortschrittsbalken",
+          "description": "Wähle ab, um Fortschrittsbalken zu verbergen."
+        },
+        {
+          "label": "Visuelles Erscheinungsbild",
+          "description": "Wähle, welches grundsätzliche Erscheinungbild genutzt werden soll.",
+          "options": [
+            {
+              "label": "Classic"
+            },
+            {
+              "label": "Chat"
+            }
+          ]
+        },
+        {
+          "label": "Basisfarbe",
+          "description": "Wählte die Basisfarbe, aus der die Farbe für Buttons, für deren Füllanimationen und einige andere Dinge abgeleitet werden soll.",
+          "default": "#1a73d9"
+        },
+        {
+          "label": "Farbe für Fortschrittsbalken",
+          "description": "Wähle die Farbe des Fortschrittsbalkens.",
+          "default": "#1a73d9"
+        }
+      ]
+    },
+    {
+      "label": "Bedienoberfläche",
+      "fields": [
+        {
+          "label": "Nicht genügend gültige Fragen",
+          "default": "Es scheint, als sei keine gültige Frage vorhanden. Bitte prüfe, ob gültige Bezeichnungen für Persönlichkeitstypen verwendet wurden.",
+          "description": "Nachricht, wenn der/die Autor*in nicht genügend gültige Fragen eingegeben hat."
+        },
+        {
+          "label": "Nicht genügend gültige Persönlichkeitstypen",
+          "default": "Es scheint, als seien nicht genügend gültige Persönlichkeitstypen vorhanden. Bitte prüfe, ob Bezeichnungen fehlen oder sie doppelt verwendet wurden.",
+          "description": "Nachricht, wenn der/die Autor*in nicht genügend gültige Persönlichkeitstypen eingegeben hat."
+        },
+        {
+          "label": "Start",
+          "default": "Start",
+          "description": "Beschriftung ders \"Start\"-Buttons."
+        },
+        {
+          "label": "Text im Fortschrittsbalken",
+          "default": "@current von @total",
+          "description": "@current und @total sind Platzhalter und werden durch die entsprechenden Werte ersetzt."
+        },
+        {
+          "label": "Überspringen",
+          "default": "Überspringen",
+          "description": "Beschriftung des \"Überspringen\"-Buttons."
+        },
+        {
+          "label": "Neustart",
+          "default": "Noch einmal starten",
+          "description": "Beschriftung des \"Neustart\"-Buttons."
+        },
+        {
+          "label": "Noch nicht beendet",
+          "default": "Das Quiz wurde noch nicht beendet.",
+          "description": "Wird in Berichten als Antwort genutzt, falls die Ergebnisse vorzeitig abgefragt werden."
+        }
+      ]
+    },
+    {
+      "label": "Texte für Barrierefreiheit",
+      "fields": [
+        {
+          "label": "Glücksrad gestartet",
+          "default": "Das Glücksrad dreht sich. Bitte warte kurz."
+        },
+        {
+          "label": "Titelbildschirm geöffnet",
+          "default": "Der Titelbildschirm wurde geöffnet."
+        },
+        {
+          "label": "Fortschrittsbalken",
+          "default": "Fortschrittsbalken"
+        },
+        {
+          "label": "Ergebnistitel",
+          "default": "Hier sind deine Ergebnisse."
+        }
+      ]
+    }
+  ]
+}
