@@ -28,4 +28,8 @@
   &.is-animated::before {
     transition: width ease-out 0.3s;
   }
+
+  &.display-none {
+    display: none;
+  }
 }

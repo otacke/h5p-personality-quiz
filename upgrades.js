@@ -67,6 +67,8 @@ H5PUpgrades['H5P.PersonalityQuiz'] = (() => {
           // Visual settings group
           parameters.visual = {
             isAnimationOn: parameters.animation ?? true,
+            showProgressBar: true,
+            appearance: 'classic',
             colorButton: parameters.buttonColor ?? '#1a73d9',
             colorProgressBar: parameters.progressbarColor ?? '#1a73d9'
           };

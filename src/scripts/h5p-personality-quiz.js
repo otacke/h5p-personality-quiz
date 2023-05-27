@@ -33,6 +33,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
       },
       visual: {
         isAnimationOn: true,
+        showProgressBar: true,
         appearance: 'classic',
         colorButton: '#1a73d9',
         colorProgressBar: '#1a73d9'
@@ -116,6 +117,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
       questions: this.params.questions,
       colorProgressBar: this.params.visual.colorProgressBar,
       isAnimationOn: this.params.visual.isAnimationOn,
+      showProgressBar: this.params.visual.showProgressBar,
       resultScreen: this.params.resultScreen,
       ...(this.params.showTitleScreen &&
         {

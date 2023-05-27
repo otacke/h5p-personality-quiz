@@ -82,7 +82,8 @@ export default class Content {
         appearance: this.params.appearance,
         questions: this.params.questions,
         colorProgressBar: this.params.colorProgressBar,
-        isAnimationOn: this.params.isAnimationOn
+        isAnimationOn: this.params.isAnimationOn,
+        showProgressBar: this.params.showProgressBar
       },
       {
         onAnswerGiven: (params) => {

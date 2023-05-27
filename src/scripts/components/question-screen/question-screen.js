@@ -48,6 +48,10 @@ export default class QuestionScreen {
         progressbar: Dictionary.get('a11y.progressBar')
       }
     });
+    if (!this.params.showProgressBar) {
+      this.progressBar.hide();
+    }
+
     this.dom.append(this.progressBar.getDOM());
 
     // Panels
