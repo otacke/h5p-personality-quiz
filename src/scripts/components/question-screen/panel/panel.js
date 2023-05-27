@@ -141,6 +141,7 @@ export default class Panel {
    * Show.
    * @param {object} [params={}] Parameters.
    * @param {boolean} [params.skipAnimation] If true, skip animation.
+   * @param {boolean} [params.focus] If true, set focus.
    */
   show(params = {}) {
     this.dom.classList.remove('display-none');
@@ -154,24 +155,31 @@ export default class Panel {
         this.params.questionText.length * Panel.DELAY_PER_CHAR_MS,
         Panel.MAX_DELAY_TYPING_ANIMATION_MS
       );
+      Globals.get('resize')();
 
       window.setTimeout(() => {
         this.questionText.innerText = this.params.questionText;
+        this.questionText.scrollIntoView(false);
 
         window.setTimeout(() => {
           this.optionWrapper.classList.remove('display-none');
           Globals.get('resize')();
-        }, Panel.DELAY_FOR_ANSWER_OPTIONS_MS);
+          if (params.focus) {
+            window.setTimeout(() => {
+              this.focus();
+            }, 50); // Prevent jumping if focus called before resize
+          }
 
-        Globals.get('resize')();
+        }, Panel.DELAY_FOR_ANSWER_OPTIONS_MS);
       }, delayTypingAnimation);
     }
     else {
       this.questionText.innerText = this.params.questionText;
       this.optionWrapper.classList.remove('display-none');
+      if (params.focus) {
+        this.focus();
+      }
     }
-
-    Globals.get('resize')();
   }
 
   /**

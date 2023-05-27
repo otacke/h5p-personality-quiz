@@ -99,6 +99,7 @@ export default class QuestionScreen {
    * Show.
    * @param {object} [params={}] Parameters.
    * @param {object[]} [params.answersGiven] Previously given answers.
+   * @param {boolean} [params.focus] If true, set focus to relevant panel.
    */
   show(params = {}) {
     this.dom.classList.remove('display-none');
@@ -111,13 +112,16 @@ export default class QuestionScreen {
         this.params.appearance === 'classic' &&
         index === questionIndex
       ) {
-        panel.show();
+        panel.show({ focus: params.focus });
       }
       else if (
         this.params.appearance === 'chat' &&
         index <= questionIndex
       ) {
-        panel.show({ skipAnimation: index !== questionIndex });
+        panel.show({
+          skipAnimation: index !== questionIndex,
+          focus: index === questionIndex && questionIndex === 0
+        });
       }
       else {
         panel.hide();
@@ -130,17 +134,6 @@ export default class QuestionScreen {
    */
   hide() {
     this.dom.classList.add('display-none');
-  }
-
-  /**
-   * Focus.
-   */
-  focus() {
-    const lastVisiblePanel = this.panels
-      .filter((panel) => panel.isVisible())
-      .pop();
-
-    lastVisiblePanel?.focus();
   }
 
   /**
@@ -178,8 +171,7 @@ export default class QuestionScreen {
       if (this.params.appearance === 'classic') {
         this.panels[panelIndex].hide();
       }
-      this.panels[panelIndex + 1].show();
-      this.panels[panelIndex + 1].focus();
+      this.panels[panelIndex + 1].show({ focus: true });
     }
   }
 }

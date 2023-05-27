@@ -218,8 +218,10 @@ export default class Content {
    * Handle title screen closed.
    */
   handleTitleScreenClosed() {
-    this.questionScreen.show({ answersGiven: this.answersGiven });
-    this.questionScreen.focus();
+    this.questionScreen.show({
+      answersGiven: this.answersGiven,
+      focus: true
+    });
 
     Globals.get('resize')();
   }
