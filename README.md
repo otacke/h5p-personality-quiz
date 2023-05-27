@@ -1,4 +1,10 @@
 # H5P Personality Quiz
+Create a personality quiz and test which Game of Thrones or Hogwarts House your
+friends belong in.
+
+The original version of this content type was produced by LumeniaAS in 2016
+(https://github.com/LumeniaAS/h5p-personality-quiz). It has been completely
+rewritten in 2023 in order to make it more maintainable.
 
 ## Getting started
 Clone this repository with git and check out the branch that you are interested
