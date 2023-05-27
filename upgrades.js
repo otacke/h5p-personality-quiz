@@ -24,7 +24,7 @@ H5PUpgrades['H5P.PersonalityQuiz'] = (() => {
             // Turn title screen text into HTML field
             if (parameters.titleScreen.title?.text) {
               parameters.titleScreen.titleScreenIntroduction =
-                `<p style="text-align: center;"><span style="font-size:1.5rem;"><strong>${parameters.titleScreen.title.text}</strong></span></p>`;
+                `<p style="text-align: center;"><span style="font-size:1.5em;"><strong>${parameters.titleScreen.title.text}</strong></span></p>`;
             }
             delete parameters.titleScreen.title;
 
