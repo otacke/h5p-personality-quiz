@@ -44,8 +44,8 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
         start: 'Start',
         currentOfTotal: '@current of @total',
         skip: 'Skip',
-        reset: 'Retake the quiz',
-        notFinished: 'The quiz was not yet finished'
+        reset: 'Restart',
+        notFinished: 'The quiz was not finished yet.'
       },
       a11y: {
         titleScreenWasOpened: 'The title screen was opened.',

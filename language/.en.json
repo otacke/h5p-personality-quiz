@@ -101,7 +101,8 @@
                       "label": "Personalities",
                       "description": "A comma separated list of personality names associated with this answer.",
                       "importantDescription": {
-                        "description": "<ul><li>Add the name of a personality that should receive a score of +1 when the option is chosen.</li><li>You can specify other scores including negative values by adding an equality sign (=) followed by the score.</li><li>Personality names need to be separate by a comma (,).</li></ul>"
+                        "description": "<ul><li>Add the name of a personality that should receive a score of +1 when the option is chosen.</li><li>You can specify other scores including negative values by adding an equality sign (=) followed by the score.</li><li>Personality names need to be separate by a comma (,).</li></ul>",
+                        "example": "apple, mango=4, strawberry=-1"
                       }
                     },
                     {
@@ -205,6 +206,16 @@
       "label": "User interface",
       "fields": [
         {
+          "label": "Not enough valid questions",
+          "default": "It seems that there is no valid question set. Please try checking for valid personality names.",
+          "description": "Message when the author did not enter enough valid questions."
+        },
+        {
+          "label": "Not enough valid personalities",
+          "default": "It seems that there are not enough valid personalities set. Please try checking for missing names or duplicate names.",
+          "description": "Message when the author did not enter enough valid personalities."
+        },
+        {
           "label": "Start",
           "default": "Start",
           "description": "Label of \"Start\" button."
@@ -226,7 +237,7 @@
         },
         {
           "label": "Not finished",
-          "default": "The quiz was not yet finished",
+          "default": "The quiz was not yet finished.",
           "description": "Used as report answer if results are requested prematurely."
         }
       ]

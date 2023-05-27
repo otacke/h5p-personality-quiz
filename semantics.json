@@ -398,6 +398,20 @@
     "common": true,
     "fields": [
       {
+        "name": "noQuestions",
+        "label": "Not enough valid questions",
+        "type": "text",
+        "default": "It seems that there is no valid question set. Please try checking for valid personality names.",
+        "description": "Message when the author did not enter enough valid questions."
+      },
+      {
+        "name": "noPersonalities",
+        "label": "Not enough valid personalities",
+        "type": "text",
+        "default": "It seems that there are not enough valid personalities set. Please try checking for missing names or duplicate names.",
+        "description": "Message when the author did not enter enough valid personalities."
+      },
+      {
         "label": "Start",
         "name": "start",
         "type": "text",
@@ -429,7 +443,7 @@
         "name": "notFinished",
         "label": "Not finished",
         "type": "text",
-        "default": "The quiz was not yet finished",
+        "default": "The quiz was not yet finished.",
         "description": "Used as report answer if results are requested prematurely."
       }
     ]
