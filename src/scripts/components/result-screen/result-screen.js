@@ -1,4 +1,3 @@
-import Globals from '@services/globals';
 import Util from '@services/util';
 import './result-screen.scss';
 
@@ -60,7 +59,7 @@ export default class ResultScreen {
     );
     this.imageInline.classList.add('display-none');
     this.imageInline.addEventListener('load', () => {
-      Globals.get('resize')();
+      this.params.globals.get('resize')();
     });
 
     this.explanation.append(this.imageInline);
@@ -96,7 +95,7 @@ export default class ResultScreen {
    * @param {boolean} [params.fade] If true, will fade in.
    */
   show(params = {}) {
-    Globals.get('read')(this.ariaText || '');
+    this.params.globals.get('read')(this.ariaText || '');
 
     if (!params.fade) {
       this.dom.classList.remove('display-none');
@@ -146,7 +145,9 @@ export default class ResultScreen {
       this.params.imagePosition === 'background' && params.image?.file?.path
     ) {
       const image = document.createElement('img');
-      H5P.setSource(image, params.image.file, Globals.get('contentId'));
+      H5P.setSource(
+        image, params.image.file, this.params.globals.get('contentId')
+      );
       this.dom.style.backgroundImage = `url("${image.src}")`;
     }
     else {
@@ -173,7 +174,9 @@ export default class ResultScreen {
       this.params.imagePosition === 'inline' && params.image?.file?.path
     ) {
       const image = document.createElement('img');
-      H5P.setSource(image, params.image.file, Globals.get('contentId'));
+      H5P.setSource(
+        image, params.image.file, this.params.globals.get('contentId')
+      );
       this.imageInline.src = image.src;
       this.imageInline.classList.remove('display-none');
     }

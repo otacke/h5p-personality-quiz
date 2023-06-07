@@ -1,4 +1,3 @@
-import Dictionary from '@services/dictionary';
 import Util from '@services/util';
 import Panel from './panel/panel';
 import ProgressBar from './progress-bar/progress-bar';
@@ -42,10 +41,10 @@ export default class QuestionScreen {
       baseColor: this.params.colorProgressBar,
       isAnimated: this.params.isAnimationOn,
       l10n: {
-        currentOfTotal: Dictionary.get('l10n.currentOfTotal')
+        currentOfTotal: this.params.dictionary.get('l10n.currentOfTotal')
       },
       a11y: {
-        progressbar: Dictionary.get('a11y.progressBar')
+        progressbar: this.params.dictionary.get('a11y.progressBar')
       }
     });
     if (!this.params.showProgressBar) {
@@ -57,6 +56,7 @@ export default class QuestionScreen {
     // Panels
     this.panels = this.params.questions.map((question, questionIndex) => {
       const panel = new Panel({
+        globals: this.params.globals,
         appearance: this.params.appearance,
         image: question.image,
         questionText: question.text,

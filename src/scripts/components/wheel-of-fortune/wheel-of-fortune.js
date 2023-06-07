@@ -1,4 +1,3 @@
-import Globals from '@services/globals';
 import Util from '@services/util';
 import Color from 'color';
 import './wheel-of-fortune.scss';
@@ -182,7 +181,7 @@ export default class WheelOfFortune {
     }, params);
 
     if (params.currentTime === 0) {
-      Globals.get('read')(this.params.a11y.started);
+      this.params.globals.get('read')(this.params.a11y.started);
     }
     else if (params.currentTime >= params.duration) {
       this.onDone();
@@ -274,7 +273,9 @@ export default class WheelOfFortune {
       pattern.setAttribute('height', '100%');
 
       const tmpImg = document.createElement('img');
-      H5P.setSource(tmpImg, segment.image.file, Globals.get('contentId'));
+      H5P.setSource(
+        tmpImg, segment.image.file, this.params.globals.get('contentId')
+      );
 
       // Try to
       const image = document.createElement('image');

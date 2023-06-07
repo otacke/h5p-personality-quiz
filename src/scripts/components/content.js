@@ -1,5 +1,3 @@
-import Dictionary from '@services/dictionary';
-import Globals from '@services/globals';
 import Util from '@services/util';
 import MediaScreen from '@components/media-screen/media-screen';
 import MessageBoxHint from '@components/message-box/message-box-hint';
@@ -62,7 +60,9 @@ export default class Content {
 
     if (!this.params.personalities.length) {
       this.messageBoxHint = new MessageBoxHint();
-      this.messageBoxHint.setText(Dictionary.get('l10n.noPersonalities'));
+      this.messageBoxHint.setText(
+        this.params.dictionary.get('l10n.noPersonalities')
+      );
       this.dom.append(this.messageBoxHint.getDOM());
 
       return false;
@@ -70,7 +70,9 @@ export default class Content {
 
     if (!this.params.questions.length) {
       this.messageBoxHint = new MessageBoxHint();
-      this.messageBoxHint.setText(Dictionary.get('l10n.noQuestions'));
+      this.messageBoxHint.setText(
+        this.params.dictionary.get('l10n.noQuestions')
+      );
       this.dom.append(this.messageBoxHint.getDOM());
 
       return false;
@@ -79,6 +81,8 @@ export default class Content {
     // Question screen
     this.questionScreen = new QuestionScreen(
       {
+        dictionary: this.params.dictionary,
+        globals: this.params.globals,
         appearance: this.params.appearance,
         questions: this.params.questions,
         colorProgressBar: this.params.colorProgressBar,
@@ -97,9 +101,13 @@ export default class Content {
     this.questionScreen.hide();
     this.dom.append(this.questionScreen.getDOM());
 
-    if (this.params.resultScreen.animation === 'wheel') {
+    if (
+      !this.params.delegateResults &&
+      this.params.resultScreen.animation === 'wheel'
+    ) {
       // Wheel of fortune
       this.wheelOfFortune = new WheelOfFortune({
+        globals: this.params.globals,
         segments: this.params.personalities.map((personality) => {
           return {
             text: personality.name,
@@ -108,10 +116,10 @@ export default class Content {
           };
         }),
         l10n: {
-          skip: Dictionary.get('l10n.skip')
+          skip: this.params.dictionary.get('l10n.skip')
         },
         a11y: {
-          started: Dictionary.get('a11y.wheelStarted')
+          started: this.params.dictionary.get('a11y.wheelStarted')
         }
       });
       this.wheelOfFortune.hide();
@@ -125,21 +133,21 @@ export default class Content {
 
       this.startScreen = new MediaScreen({
         id: 'start',
-        contentId: Globals.get('contentId'),
+        contentId: this.params.globals.get('contentId'),
         introduction: this.params.titleScreen.titleScreenIntroduction,
         medium: this.params.titleScreen.titleScreenMedium,
         buttons: [
-          { id: 'start', text: Dictionary.get('l10n.start') }
+          { id: 'start', text: this.params.dictionary.get('l10n.start') }
         ],
         a11y: {
-          screenOpened: Dictionary.get('a11y.titleScreenWasOpened')
+          screenOpened: this.params.dictionary.get('a11y.titleScreenWasOpened')
         }
       }, {
         onButtonClicked: () => {
           this.handleTitleScreenClosed();
         },
         onRead: (text) => {
-          Globals.get('read')(text);
+          this.params.globals.get('read')(text);
         }
       });
 
@@ -153,12 +161,13 @@ export default class Content {
     this.resultScreen = new ResultScreen(
       {
         ...(this.params.resultScreen),
+        globals: this.params.globals,
         l10n: {
-          notFinished: Dictionary.get('l10n.notFinished'),
-          reset: Dictionary.get('l10n.reset')
+          notFinished: this.params.dictionary.get('l10n.notFinished'),
+          reset: this.params.dictionary.get('l10n.reset')
         },
         a11y: {
-          resultsTitle: Dictionary.get('a11y.resultsTitle')
+          resultsTitle: this.params.dictionary.get('a11y.resultsTitle')
         }
       },
       {
@@ -224,7 +233,7 @@ export default class Content {
       focus: true
     });
 
-    Globals.get('resize')();
+    this.params.globals.get('resize')();
   }
 
   /**
@@ -244,7 +253,7 @@ export default class Content {
       option: params.optionIndex
     });
 
-    Globals.get('triggerXAPIEvent')('progressed');
+    this.params.globals.get('triggerXAPIEvent')('progressed');
   }
 
   /**
@@ -253,8 +262,6 @@ export default class Content {
    * @param {boolean} [params.isFromReset] If true, don't focus, etc.
    */
   handleCompleted(params = {}) {
-    this.questionScreen.hide();
-
     // Determine one personality with highest score
     const maxScore = Math.max(...this.scores);
     const winnerIndexes = this.scores.reduce((winners, current, index) => {
@@ -267,13 +274,20 @@ export default class Content {
       Math.floor(Math.random() * winnerIndexes.length)
     ];
 
+    this.params.globals.get('triggerXAPIEvent')('completed');
+
+    if (this.params.delegateResults) {
+      return;
+    }
+
+    this.questionScreen.hide();
+
     this.resultScreen.setContent(this.params.personalities[winnerIndex]);
-    Globals.get('triggerXAPIEvent')('completed');
 
     if (this.params.resultScreen.animation === 'wheel' && !params.isFromReset) {
       this.wheelOfFortune?.show();
       this.wheelOfFortune?.focus();
-      Globals.get('resize')();
+      this.params.globals.get('resize')();
 
       this.wheelOfFortune.spinTo(winnerIndex, () => {
         this.wheelOfFortune.hide({ fade: true, onHidden: () => {
@@ -282,7 +296,7 @@ export default class Content {
             this.resultScreen.focus();
           }
 
-          Globals.get('resize')();
+          this.params.globals.get('resize')();
         } });
       });
     }
@@ -292,7 +306,7 @@ export default class Content {
         this.resultScreen.focus();
       }
 
-      Globals.get('resize')();
+      this.params.globals.get('resize')();
     }
     else {
       this.resultScreen.show();
@@ -300,7 +314,7 @@ export default class Content {
         this.resultScreen.focus();
       }
 
-      Globals.get('resize')();
+      this.params.globals.get('resize')();
     }
   }
 
@@ -339,6 +353,6 @@ export default class Content {
       this.handleCompleted({ isFromReset: true });
     }
 
-    Globals.get('resize')();
+    this.params.globals.get('resize')();
   }
 }

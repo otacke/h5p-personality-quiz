@@ -1,4 +1,3 @@
-import Globals from '@services/globals';
 import Util from '@services/util';
 import './option.scss';
 
@@ -77,9 +76,11 @@ export default class Option {
       image.classList.add('h5p-personality-quiz-answer-option-button-image');
       image.setAttribute('alt', this.params.image.alt ?? '');
       image.addEventListener('load', () => {
-        Globals.get('resize')();
+        this.params.globals.get('resize')();
       });
-      H5P.setSource(image, this.params.image.file, Globals.get('contentId'));
+      H5P.setSource(
+        image, this.params.image.file, this.params.globals.get('contentId')
+      );
       this.button.append(image);
     }
 

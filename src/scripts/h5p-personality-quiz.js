@@ -52,6 +52,9 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
         wheelStarted: 'The wheel of fortune started spinning. Please wait a moment.',
         progressBar: 'Progress bar',
         resultsTitle: 'Here are your results.'
+      },
+      behaviour: {
+        delegateResults: false // Used for external override
       }
     }, params);
 
@@ -69,19 +72,21 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
     document.body.append(Screenreader.getDOM());
 
     // Globals
-    Globals.set('contentId', this.contentId);
-    Globals.set('resize', () => {
+    this.globals = new Globals();
+    this.globals.set('contentId', this.contentId);
+    this.globals.set('resize', () => {
       this.trigger('resize');
     });
-    Globals.set('read', (text) => {
+    this.globals.set('read', (text) => {
       Screenreader.read(text);
     });
-    Globals.set('triggerXAPIEvent', (verb) => {
+    this.globals.set('triggerXAPIEvent', (verb) => {
       return this.triggerXAPIEvent(verb);
     });
 
     // Fill dictionary
-    Dictionary.fill({ l10n: this.params.l10n, a11y: this.params.a11y });
+    this.dictionary = new Dictionary();
+    this.dictionary.fill({ l10n: this.params.l10n, a11y: this.params.a11y });
 
     this.previousState = extras?.previousState || {};
 
@@ -111,6 +116,8 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
     dom.classList.add('h5p-personality-quiz-main');
 
     this.content = new Content({
+      dictionary: this.dictionary,
+      globals: this.globals,
       appearance: this.params.visual.appearance,
       previousState: this.previousState,
       personalities: this.params.personalities,
@@ -119,6 +126,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
       isAnimationOn: this.params.visual.isAnimationOn,
       showProgressBar: this.params.visual.showProgressBar,
       resultScreen: this.params.resultScreen,
+      delegateResults: this.params.behaviour.delegateResults,
       ...(this.params.showTitleScreen &&
         {
           titleScreen: {

@@ -1,4 +1,3 @@
-import Globals from '@services/globals';
 import Util from '@services/util';
 import Option from './option.js';
 import './panel.scss';
@@ -49,9 +48,11 @@ export default class Panel {
       image.classList.add('h5p-personality-quiz-panel-image');
       image.setAttribute('alt', this.params.image.file.alt ?? '');
       image.addEventListener('load', () => {
-        Globals.get('resize')();
+        this.params.globals.get('resize')();
       });
-      H5P.setSource(image, this.params.image.file, Globals.get('contentId'));
+      H5P.setSource(
+        image, this.params.image.file, this.params.globals.get('contentId')
+      );
       this.dom.append(image);
     }
 
@@ -106,6 +107,7 @@ export default class Panel {
 
       const optionInstance = new Option(
         {
+          globals: this.params.globals,
           appearance: this.params.appearance,
           mode: mode,
           text: option.text,
@@ -154,7 +156,8 @@ export default class Panel {
         this.params.questionText.length * Panel.DELAY_PER_CHAR_MS,
         Panel.MAX_DELAY_TYPING_ANIMATION_MS
       );
-      Globals.get('resize')();
+
+      this.params.globals.get('resize')();
 
       window.setTimeout(() => {
         this.questionText.innerText = this.params.questionText;
@@ -165,7 +168,7 @@ export default class Panel {
 
         window.setTimeout(() => {
           this.optionWrapper.classList.remove('display-none');
-          Globals.get('resize')();
+          this.params.globals.get('resize')();
           if (params.focus) {
             window.setTimeout(() => {
               this.focus({ scrollIntoView: true });
