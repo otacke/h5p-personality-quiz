@@ -148,8 +148,7 @@ export default class Panel {
     this.isVisibleState = true;
 
     if (
-      !params.skipAnimation &&
-      this.params.animation && this.params.appearance === 'chat'
+      !params.skipAnimation && this.params.appearance === 'chat'
     ) {
       const delayTypingAnimation = Math.min(
         this.params.questionText.length * Panel.DELAY_PER_CHAR_MS,
@@ -159,7 +158,10 @@ export default class Panel {
 
       window.setTimeout(() => {
         this.questionText.innerText = this.params.questionText;
-        this.questionText.scrollIntoView({ behavior: 'smooth' });
+
+        if (params.focus) {
+          this.questionText.scrollIntoView({ behavior: 'smooth' });
+        }
 
         window.setTimeout(() => {
           this.optionWrapper.classList.remove('display-none');

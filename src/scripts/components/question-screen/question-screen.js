@@ -123,8 +123,8 @@ export default class QuestionScreen {
         index <= questionIndex
       ) {
         panel.show({
-          skipAnimation: index !== questionIndex,
-          focus: index === questionIndex && questionIndex === 0
+          skipAnimation: index !== questionIndex && !params.focus,
+          focus: params.focus && index === questionIndex && questionIndex === 0
         });
       }
       else {

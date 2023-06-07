@@ -330,7 +330,10 @@ export default class Content {
       });
     }
     else if (this.answersGiven.length !== this.params.questions.length) {
-      this.questionScreen.show({ answersGiven: this.answersGiven });
+      this.questionScreen.show({
+        answersGiven: this.answersGiven,
+        focus: !!params.shouldSetFocus
+      });
     }
     else {
       this.handleCompleted({ isFromReset: true });
