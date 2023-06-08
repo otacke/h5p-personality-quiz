@@ -337,7 +337,13 @@ export default class Content {
     this.wheelOfFortune?.hide();
     this.resultScreen.hide();
 
-    if (this.params.titleScreen && this.answersGiven.length === 0) {
+    if (
+      this.params.delegateRun &&
+      this.answersGiven.length !== this.params.questions.length
+    ) {
+      // The parent will need to handle run
+    }
+    else if (this.params.titleScreen && this.answersGiven.length === 0) {
       this.startScreen.show({
         focusButton: params.shouldSetFocus,
         readOpened: params.shouldSetFocus
@@ -354,5 +360,21 @@ export default class Content {
     }
 
     this.params.globals.get('resize')();
+  }
+
+  /**
+   * Run content.
+   * @param {object} [params] Parameters.
+   * @param {boolean} [params.focus] If true. set focus.
+   */
+  run(params = {}) {
+    if (this.answersGiven.length === this.params.questions.length) {
+      return; // Should have been handled by now.
+    }
+
+    this.questionScreen.show({
+      answersGiven: this.answersGiven,
+      focus: params.focus
+    });
   }
 }

@@ -105,6 +105,17 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
   attach($wrapper) {
     $wrapper.get(0).classList.add('h5p-personality-quiz');
     $wrapper.get(0).appendChild(this.dom);
+
+    if (!this.params.behaviour.delegateRun) {
+      this.run();
+    }
+  }
+
+  /**
+   * Run.
+   */
+  run() {
+    this.content.run();
   }
 
   /**
@@ -127,6 +138,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
       showProgressBar: this.params.visual.showProgressBar,
       resultScreen: this.params.resultScreen,
       delegateResults: this.params.behaviour.delegateResults,
+      delegateRun: this.params.behaviour.delegateRun,
       ...(this.params.showTitleScreen &&
         {
           titleScreen: {
@@ -146,6 +158,15 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
     dom.append(this.content.getDOM());
 
     return dom;
+  }
+
+  /**
+   * Get number of questions.
+   * Could be computed using params, but would duplicate sanitizing.
+   * @returns {number} Number of questions.
+   */
+  getNumberOfQuestions() {
+    return this.params.questions.length ?? 0;
   }
 
   /**
@@ -284,6 +305,14 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
     this.dom.style.setProperty('--color-button-active', colorActive);
     this.dom.style.setProperty('--color-button-text-active', colorTextActive);
     this.dom.style.setProperty('--color-button-pale', colorPale);
+  }
+
+  /**
+   * Get current position.
+   * @returns {number} Current position, zero-indexed.
+   */
+  getCurrentPosition() {
+    return (this.content?.getCurrentPosition() ?? 1) - 1;
   }
 
   /**
