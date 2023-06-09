@@ -39,7 +39,9 @@ export default class Content {
       return;
     }
 
-    this.reset();
+    if (!this.params.delegateRun) {
+      this.reset();
+    }
   }
 
   /**
@@ -341,7 +343,10 @@ export default class Content {
       this.params.delegateRun &&
       this.answersGiven.length !== this.params.questions.length
     ) {
-      // The parent will need to handle run
+      this.questionScreen.show({
+        answersGiven: this.answersGiven,
+        focus: params.focus
+      });
     }
     else if (this.params.titleScreen && this.answersGiven.length === 0) {
       this.startScreen.show({
@@ -368,13 +373,6 @@ export default class Content {
    * @param {boolean} [params.focus] If true. set focus.
    */
   run(params = {}) {
-    if (this.answersGiven.length === this.params.questions.length) {
-      return; // Should have been handled by now.
-    }
-
-    this.questionScreen.show({
-      answersGiven: this.answersGiven,
-      focus: params.focus
-    });
+    this.reset();
   }
 }
