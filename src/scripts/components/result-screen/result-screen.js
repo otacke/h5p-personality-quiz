@@ -135,6 +135,8 @@ export default class ResultScreen {
   setContent(params = {}) {
     this.ariaText = `${this.params.a11y.resultsTitle} ${params.name}`;
     this.resultText = params.name;
+    this.resultDescription = params.description;
+    this.image = params.image;
 
     if (params.description && this.params.displayDescription) {
       this.ariaText = `${this.ariaText}. ${Util.purifyHTML(params.description)}`;
@@ -200,10 +202,14 @@ export default class ResultScreen {
   }
 
   /**
-   * Get result text.
-   * @returns {string} Result text.
+   * Get results for result screen.
+   * @returns {object} Results.
    */
-  getResultText() {
-    return this.resultText;
+  getResults() {
+    return {
+      personality: this.resultText,
+      description: this.resultDescription,
+      image: this.image
+    };
   }
 }

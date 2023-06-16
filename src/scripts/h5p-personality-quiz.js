@@ -324,6 +324,17 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
   }
 
   /**
+   * Get results for content.
+   * @returns {object} Results.
+   */
+  getResults() {
+    return {
+      title: this.extras.metadata.title,
+      ...this.content?.getResults()
+    };
+  }
+
+  /**
    * Get task title.
    * @returns {string} Title.
    */

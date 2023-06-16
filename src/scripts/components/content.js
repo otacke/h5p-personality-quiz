@@ -223,7 +223,15 @@ export default class Content {
    * @returns {object} Result text.
    */
   getResultText() {
-    return this.resultScreen.getResultText();
+    return this.resultScreen.getResults().text;
+  }
+
+  /**
+   * Get results for result screen.
+   * @returns {object} Results.
+   */
+  getResults() {
+    return this.resultScreen.getResults();
   }
 
   /**
@@ -278,13 +286,13 @@ export default class Content {
 
     this.params.globals.get('triggerXAPIEvent')('completed');
 
+    this.resultScreen.setContent(this.params.personalities[winnerIndex]);
+
     if (this.params.delegateResults) {
       return;
     }
 
     this.questionScreen.hide();
-
-    this.resultScreen.setContent(this.params.personalities[winnerIndex]);
 
     if (this.params.resultScreen.animation === 'wheel' && !params.isFromReset) {
       this.wheelOfFortune?.show();
