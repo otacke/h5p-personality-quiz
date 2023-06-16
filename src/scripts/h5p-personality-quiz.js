@@ -309,10 +309,10 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
 
   /**
    * Get current position.
-   * @returns {number} Current position, zero-indexed.
+   * @returns {number} Current position.
    */
   getCurrentPosition() {
-    return (this.content?.getCurrentPosition() ?? 1) - 1;
+    return this.content?.getCurrentPosition();
   }
 
   /**

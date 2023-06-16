@@ -215,7 +215,11 @@ export default class Content {
    * @returns {number} Current position.
    */
   getCurrentPosition() {
-    return this.answersGiven.length + 1;
+    if (!this.answersGiven) {
+      return 0;
+    }
+
+    return this.answersGiven.length;
   }
 
   /**
@@ -234,6 +238,8 @@ export default class Content {
       answersGiven: this.answersGiven,
       focus: true
     });
+
+    this.params.globals.get('triggerXAPIEvent')('progressed');
 
     this.params.globals.get('resize')();
   }
@@ -255,7 +261,9 @@ export default class Content {
       option: params.optionIndex
     });
 
-    this.params.globals.get('triggerXAPIEvent')('progressed');
+    if (this.answersGiven.length < this.params.questions.length) {
+      this.params.globals.get('triggerXAPIEvent')('progressed');
+    }
   }
 
   /**
@@ -338,6 +346,7 @@ export default class Content {
 
     this.wheelOfFortune?.hide();
     this.resultScreen.hide();
+    this.resultScreen.reset();
 
     if (
       this.params.delegateRun &&
@@ -347,6 +356,7 @@ export default class Content {
         answersGiven: this.answersGiven,
         focus: params.focus
       });
+      this.params.globals.get('triggerXAPIEvent')('progressed');
     }
     else if (this.params.titleScreen && this.answersGiven.length === 0) {
       this.startScreen.show({
@@ -359,6 +369,7 @@ export default class Content {
         answersGiven: this.answersGiven,
         focus: !!params.shouldSetFocus
       });
+      this.params.globals.get('triggerXAPIEvent')('progressed');
     }
     else {
       this.handleCompleted({ isFromReset: true });

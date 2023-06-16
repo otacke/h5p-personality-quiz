@@ -31,7 +31,7 @@ export default class XAPI {
         this.getScore(),
         this.getMaxScore(),
         this,
-        true,
+        this.getScore() > 0,
         this.getScore() === this.getMaxScore()
       );
 
@@ -41,7 +41,7 @@ export default class XAPI {
     else if (verb === 'progressed') {
       xAPIEvent.data.statement.object.definition
         .extensions['http://id.tincanapi.com/extension/ending-point'] =
-          this.content?.getCurrentPosition();
+          this.content?.getCurrentPosition() + 1;
     }
 
     return xAPIEvent;

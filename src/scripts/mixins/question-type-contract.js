@@ -17,7 +17,7 @@ export default class QuestionTypeContract {
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
    */
   getScore() {
-    return 1; // No real score, but required for moodle's task completion.
+    return this.getCurrentPosition(); // No real score, but required for moodle's task completion.
   }
 
   /**
@@ -26,7 +26,7 @@ export default class QuestionTypeContract {
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
    */
   getMaxScore() {
-    return 1; // No real score, but required for moodle's task completion.
+    return this.getNumberOfQuestions(); // No real score, but required for moodle's task completion.
   }
 
   /**

@@ -118,6 +118,13 @@ export default class ResultScreen {
   }
 
   /**
+   * Reset.
+   */
+  reset() {
+    this.resultText = this.params.l10n.notFinished;
+  }
+
+  /**
    * Focus.
    */
   focus() {
