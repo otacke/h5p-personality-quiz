@@ -36,7 +36,7 @@ export default class XAPI {
       );
 
       xAPIEvent.data.statement.result.response =
-        this.content?.getResultText();
+        this.content?.getResults()?.personality;
     }
     else if (verb === 'progressed') {
       xAPIEvent.data.statement.object.definition

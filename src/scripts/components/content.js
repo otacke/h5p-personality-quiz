@@ -219,14 +219,6 @@ export default class Content {
   }
 
   /**
-   * Get result text.
-   * @returns {object} Result text.
-   */
-  getResultText() {
-    return this.resultScreen.getResults().text;
-  }
-
-  /**
    * Get results for result screen.
    * @returns {object} Results.
    */
