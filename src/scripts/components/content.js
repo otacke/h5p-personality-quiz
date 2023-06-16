@@ -356,7 +356,6 @@ export default class Content {
         answersGiven: this.answersGiven,
         focus: params.focus
       });
-      this.params.globals.get('triggerXAPIEvent')('progressed');
     }
     else if (this.params.titleScreen && this.answersGiven.length === 0) {
       this.startScreen.show({
@@ -369,7 +368,6 @@ export default class Content {
         answersGiven: this.answersGiven,
         focus: !!params.shouldSetFocus
       });
-      this.params.globals.get('triggerXAPIEvent')('progressed');
     }
     else {
       this.handleCompleted({ isFromReset: true });
@@ -384,6 +382,6 @@ export default class Content {
    * @param {boolean} [params.focus] If true. set focus.
    */
   run(params = {}) {
-    this.reset();
+    this.reset(params);
   }
 }

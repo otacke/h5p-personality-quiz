@@ -112,10 +112,12 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
   }
 
   /**
-   * Run.
+   * Run content.
+   * @param {object} [params] Parameters.
+   * @param {boolean} [params.focus] If true. set focus.
    */
-  run() {
-    this.content.run();
+  run(params) {
+    this.content.run(params);
   }
 
   /**

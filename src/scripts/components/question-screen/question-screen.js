@@ -107,11 +107,14 @@ export default class QuestionScreen {
    */
   show(params = {}) {
     this.dom.classList.remove('display-none');
-
     params.answersGiven = params.answersGiven ?? [];
     const questionIndex = params.answersGiven.length;
 
     this.panels.forEach((panel, index) => {
+      if (index === questionIndex && params.focus) {
+        this.params.globals.get('triggerXAPIEvent')('progressed');
+      }
+
       if (
         this.params.appearance === 'classic' &&
         index === questionIndex
