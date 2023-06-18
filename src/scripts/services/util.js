@@ -90,8 +90,8 @@ export default class Util {
 
   /**
    * Add mixins to a class, useful for splitting files.
-   * @param {object} [master={}] Master class to add mixins to.
-   * @param {object[]|object} [mixins=[]] Mixins to be added to master.
+   * @param {object} [master] Master class to add mixins to.
+   * @param {object[]|object} [mixins] Mixins to be added to master.
    */
   static addMixins(master = {}, mixins = []) {
     if (!master.prototype) {

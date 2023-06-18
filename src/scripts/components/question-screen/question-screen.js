@@ -8,9 +8,9 @@ export default class QuestionScreen {
   /**
    * Question screen.
    * @class
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {object[]} [params.questions] Question data.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [callbacks] Callbacks.
    * @param {function} [callbacks.onAnswerGiven] Callback on answer given.
    * @param {function} [callbacks.onCompleted] Callback when all is completed.
    */
@@ -101,7 +101,7 @@ export default class QuestionScreen {
 
   /**
    * Show.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {object[]} [params.answersGiven] Previously given answers.
    * @param {boolean} [params.focus] If true, set focus to relevant panel.
    */
@@ -145,14 +145,14 @@ export default class QuestionScreen {
 
   /**
    * Reset.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {object[]} [params.answersGiven] Previously given answers.
    */
   reset(params = {}) {
     params.answersGiven = params.answersGiven ?? [];
     const questionIndex = params.answersGiven.length;
 
-    this.progressBar.setProgress(questionIndex + 1);
+    this.progressBar.setProgress(questionIndex);
 
     this.panels.forEach((panel, index) => {
       const answer = params.answersGiven

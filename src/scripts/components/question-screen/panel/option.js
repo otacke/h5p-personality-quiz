@@ -6,12 +6,12 @@ export default class Option {
   /**
    * Question screen.
    * @class
-   * @param {object} [params={}] Parameters.
-   * @param {string} [params.appearance='classic'] Appearance, 'classic', 'chat'.
-   * @param {string} [params.mode='text'] Mode 'text' or 'image'.
+   * @param {object} [params] Parameters.
+   * @param {string} [params.appearance] Appearance, 'classic', 'chat'.
+   * @param {string} [params.mode] Mode 'text' or 'image'.
    * @param {string} [params.text] Text for option.
-   * @param {object} [params.image={}] Image data.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [params.image] Image data.
+   * @param {object} [callbacks] Callbacks.
    * @param {function} [callbacks.onClicked] Callback when option is chosen.
    * @param {function} [callbacks.onCompleted] Callback on animation ended.
    */
@@ -119,7 +119,7 @@ export default class Option {
 
   /**
    * Focus.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.scrollIntoView] If true, scroll into view first.
    */
   focus(params = {}) {
@@ -138,7 +138,7 @@ export default class Option {
 
   /**
    * Select.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.animate] If true, animate when being selected.
    */
   select(params = {}) {
@@ -151,7 +151,7 @@ export default class Option {
 
   /**
    * Reset.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.selected] If true, set to selected.
    * @param {boolean} [params.disabled] If true, set to disabled.
    */

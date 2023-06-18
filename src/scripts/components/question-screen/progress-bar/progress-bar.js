@@ -7,9 +7,9 @@ export default class ProgressBar {
   /**
    * Question screen.
    * @class
-   * @param {object} [params={}] Parameters.
-   * @param {number} [params.valueMin=1] Minimum progress number.
-   * @param {number} [params.valueMax=1] Maximum progress number.
+   * @param {object} [params] Parameters.
+   * @param {number} [params.valueMin] Minimum progress number.
+   * @param {number} [params.valueMax] Maximum progress number.
    * @param {string} [params.baseColor] Base color for bar.
    * @param {object} [params.l10n] Localization.
    * @param {string} [params.l10n.currentOfTotal] Text in progress bar.

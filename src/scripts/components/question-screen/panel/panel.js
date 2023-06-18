@@ -7,13 +7,13 @@ export default class Panel {
   /**
    * Question screen.
    * @class
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {string} [params.appearance] Appearence, 'classic', 'chat'.
    * @param {string} [params.questionText] Question text.
    * @param {boolean} [params.animation] If true, animate option buttons.
    * @param {object} [params.answerOptions] Answer options.
-   * @param {object} [params.image={}] Image data.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [params.image] Image data.
+   * @param {object} [callbacks] Callbacks.
    * @param {function} [callbacks.onAnswerGiven] Callback on answer given.
    * @param {function} [callbacks.onClicked] Callback when panel is completed.
    */
@@ -141,7 +141,7 @@ export default class Panel {
 
   /**
    * Show.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.skipAnimation] If true, skip animation.
    * @param {boolean} [params.focus] If true, set focus.
    */
@@ -212,7 +212,7 @@ export default class Panel {
 
   /**
    * Reset.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {number} [params.optionChosen] Index of previously chosen option.
    */
   reset(params = {}) {

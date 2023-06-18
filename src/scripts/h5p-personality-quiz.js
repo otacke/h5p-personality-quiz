@@ -105,10 +105,6 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
   attach($wrapper) {
     $wrapper.get(0).classList.add('h5p-personality-quiz');
     $wrapper.get(0).appendChild(this.dom);
-
-    if (!this.params.behaviour.delegateRun) {
-      this.run();
-    }
   }
 
   /**

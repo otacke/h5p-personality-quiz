@@ -5,14 +5,14 @@ import './media-screen.scss';
 export default class MediaScreen {
   /**
    * @class
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {number} [params.contentId] H5P content id.
    * @param {string} [params.titleText] Title text.
-   * @param {object} [params.l10n={}] Localization strings.
-   * @param {string} [params.l10n.buttonText='Close'] Default button text.
-   * @param {object} [params.a11y={}] Screen reader strings.
+   * @param {object} [params.l10n] Localization strings.
+   * @param {string} [params.l10n.buttonText] Default button text.
+   * @param {object} [params.a11y] Screen reader strings.
    * @param {object} [params.a11y.screenOpened] Screen opened text.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [callbacks] Callbacks.
    * @param {function} [callbacks.onButtonClicked] Callback when button clicked.
    * @param {function} [callbacks.onRead] Callback to read on screen reader.
    */

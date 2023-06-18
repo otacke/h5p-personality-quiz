@@ -6,10 +6,10 @@ export default class ResultScreen {
   /**
    * Question screen.
    * @class
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {object} [params.l10n] Localization.
    * @param {object} [params.a11y] Accessibility.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [callbacks] Callbacks.
    * @param {function} [callbacks.onReset] Callback when reset button clicked.
    */
   constructor(params = {}, callbacks = {}) {
@@ -91,7 +91,7 @@ export default class ResultScreen {
 
   /**
    * Show.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.fade] If true, will fade in.
    */
   show(params = {}) {
@@ -133,7 +133,7 @@ export default class ResultScreen {
 
   /**
    * Set content.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {string} params.name Personality name.
    * @param {string} [params.description] Personality description.
    * @param {string} [params.imagePosition] Position 'background' or 'inline'.

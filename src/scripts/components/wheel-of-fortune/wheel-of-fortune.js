@@ -7,7 +7,7 @@ export default class WheelOfFortune {
   /**
    * General purpose message box.
    * @class
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {object[]} [params.segments] Segments' data.
    */
   constructor(params = {}) {
@@ -100,7 +100,7 @@ export default class WheelOfFortune {
 
   /**
    * Hide.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.fade] If true, will fade out before hiding.
    * @param {function} [params.onHidden] Callback when hidden.
    */
@@ -166,7 +166,7 @@ export default class WheelOfFortune {
 
   /**
    * Spin wheel.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {number} params.time Current time
    * @param {number} params.start Start value.
    * @param {number} params.delta Delta from start.
@@ -245,7 +245,7 @@ export default class WheelOfFortune {
 
   /**
    * Build SVG.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @returns {SVGElement} SVG.
    */
   buildWheelSVG(params = {}) {
@@ -336,11 +336,11 @@ export default class WheelOfFortune {
 
   /**
    * Build segment.
-   * @param {object} [params = {}] Parameters.
-   * @param {number} [params.startAngle=0] Start angle.
-   * @param {number} [params.endAngle=Math.PI * 1.99999] End angle.
-   * @param {number} [params.whiteValue=0] White value
-   * @param {string} [params.fillColor='rgb(26 115 217')] Fill color.
+   * @param {object} [params] Parameters.
+   * @param {number} [params.startAngle] Start angle.
+   * @param {number} [params.endAngle] End angle.
+   * @param {number} [params.whiteValue] White value
+   * @param {string} [params.fillColor] Fill color.
    * @param {string} [params.text] Segment text.
    * @returns {HTMLElement} Segment element.
    */

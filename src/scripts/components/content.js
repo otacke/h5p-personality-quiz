@@ -246,7 +246,7 @@ export default class Content {
 
   /**
    * Handle answer given.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {number} params.questionIndex Index of question.
    * @param {number} params.optionIndex Index of chosen option.
    */
@@ -268,7 +268,7 @@ export default class Content {
 
   /**
    * Handle completed.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.isFromReset] If true, don't focus, etc.
    */
   handleCompleted(params = {}) {
@@ -330,7 +330,7 @@ export default class Content {
 
   /**
    * Reset.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.shouldSetFocus] If true, set focus.
    */
   reset(params = {}) {
