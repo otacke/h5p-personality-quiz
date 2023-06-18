@@ -106,34 +106,36 @@ export default class QuestionScreen {
    * @param {boolean} [params.focus] If true, set focus to relevant panel.
    */
   show(params = {}) {
-    this.dom.classList.remove('display-none');
-    params.answersGiven = params.answersGiven ?? [];
-    const questionIndex = params.answersGiven.length;
+    params = Util.extend({ answersGiven: [] }, params);
+
+    const lastQuestionIndex = params.answersGiven.length;
 
     this.panels.forEach((panel, index) => {
-      if (index === questionIndex && params.focus) {
+      if (index === lastQuestionIndex && params.focus) {
         this.params.globals.get('triggerXAPIEvent')('progressed');
       }
 
-      if (
-        this.params.appearance === 'classic' &&
-        index === questionIndex
-      ) {
+      if (this.params.appearance === 'classic' && index === lastQuestionIndex) {
         panel.show({ focus: params.focus });
       }
-      else if (
-        this.params.appearance === 'chat' &&
-        index <= questionIndex
-      ) {
+      else if (this.params.appearance === 'chat' && index < lastQuestionIndex) {
         panel.show({
-          skipAnimation: index !== questionIndex && !params.focus,
-          focus: params.focus && index === questionIndex && questionIndex === 0
+          showInstantly: true,
+          focus: false
+        });
+      }
+      else if (this.params.appearance === 'chat' && index === lastQuestionIndex) {
+        panel.show({
+          showInstantly: params.showInstantly,
+          focus: params.focus
         });
       }
       else {
         panel.hide();
       }
     });
+
+    this.dom.classList.remove('display-none');
   }
 
   /**
@@ -149,10 +151,11 @@ export default class QuestionScreen {
    * @param {object[]} [params.answersGiven] Previously given answers.
    */
   reset(params = {}) {
-    params.answersGiven = params.answersGiven ?? [];
-    const questionIndex = params.answersGiven.length;
+    params = Util.extend({ answersGiven: [] }, params);
 
-    this.progressBar.setProgress(questionIndex);
+    const lastQuestionIndex = params.answersGiven.length;
+
+    this.progressBar.setProgress(lastQuestionIndex);
 
     this.panels.forEach((panel, index) => {
       const answer = params.answersGiven

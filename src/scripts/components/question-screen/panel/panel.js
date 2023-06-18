@@ -142,7 +142,7 @@ export default class Panel {
   /**
    * Show.
    * @param {object} [params] Parameters.
-   * @param {boolean} [params.skipAnimation] If true, skip animation.
+   * @param {boolean} [params.showInstantly] If true, skip animation.
    * @param {boolean} [params.focus] If true, set focus.
    */
   show(params = {}) {
@@ -150,7 +150,7 @@ export default class Panel {
     this.isVisibleState = true;
 
     if (
-      !params.skipAnimation && this.params.appearance === 'chat'
+      !params.showInstantly && this.params.appearance === 'chat'
     ) {
       const delayTypingAnimation = Math.min(
         this.params.questionText.length * Panel.DELAY_PER_CHAR_MS,

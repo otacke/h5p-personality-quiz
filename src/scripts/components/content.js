@@ -331,7 +331,8 @@ export default class Content {
   /**
    * Reset.
    * @param {object} [params] Parameters.
-   * @param {boolean} [params.shouldSetFocus] If true, set focus.
+   * @param {boolean} [params.showInstantly] If true, don't animate anything.
+   * @param {boolean} [params.focus] If true, set focus.
    */
   reset(params = {}) {
     this.scores = this.params.previousState.scores ??
@@ -348,7 +349,14 @@ export default class Content {
     this.resultScreen.hide();
     this.resultScreen.reset();
 
-    if (
+    if (params.showInstantly) {
+      this.questionScreen.show({
+        answersGiven: this.answersGiven,
+        focus: params.focus,
+        showInstantly: params.showInstantly
+      });
+    }
+    else if (
       this.params.delegateRun &&
       this.answersGiven.length !== this.params.questions.length
     ) {
@@ -359,14 +367,14 @@ export default class Content {
     }
     else if (this.params.titleScreen && this.answersGiven.length === 0) {
       this.startScreen.show({
-        focusButton: params.shouldSetFocus,
-        readOpened: params.shouldSetFocus
+        focusButton: params.focus,
+        readOpened: params.focus
       });
     }
     else if (this.answersGiven.length !== this.params.questions.length) {
       this.questionScreen.show({
         answersGiven: this.answersGiven,
-        focus: !!params.shouldSetFocus
+        focus: !!params.focus
       });
     }
     else {
