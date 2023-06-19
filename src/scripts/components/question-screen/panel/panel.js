@@ -187,7 +187,9 @@ export default class Panel {
       this.questionText.innerText = this.params.questionText;
       this.optionWrapper.classList.remove('display-none');
       if (params.focus) {
-        this.focus();
+        window.requestAnimationFrame(() => {
+          this.focus();
+        }); // Ensure option is visible
       }
     }
   }

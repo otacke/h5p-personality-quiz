@@ -174,7 +174,7 @@ export default class Content {
       },
       {
         onReset: () => {
-          this.reset({ shouldSetFocus: true });
+          this.reset({ focus: true });
         }
       }
     );
