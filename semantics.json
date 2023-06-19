@@ -477,6 +477,12 @@
         "label": "Results title",
         "type": "text",
         "default": "Here are your results."
+      },
+      {
+        "name": "standby",
+        "label": "\"Stand\" by message",
+        "type": "text",
+        "default": "Stand by."
       }
     ]
   }

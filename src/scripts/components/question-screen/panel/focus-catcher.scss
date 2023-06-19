@@ -1,0 +1,12 @@
+.h5p-focus-catcher {
+  height: 1px;
+  left: -999999px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 1px;
+  width: 1px;
+
+  &[tabindex="-1"] {
+    display: none;
+  }
+}

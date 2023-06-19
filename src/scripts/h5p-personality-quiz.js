@@ -51,7 +51,8 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
         titleScreenWasOpened: 'The title screen was opened.',
         wheelStarted: 'The wheel of fortune started spinning. Please wait a moment.',
         progressBar: 'Progress bar',
-        resultsTitle: 'Here are your results.'
+        resultsTitle: 'Here are your results.',
+        standby: 'Stand by.'
       },
       behaviour: {
         delegateResults: false // Used for external override
@@ -330,7 +331,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
   getContext() {
     const position = (this.content) ?
       this.content?.getCurrentPosition() + 1 :
-      (this.previousState.answersGiven.length + 1) || 0;
+      (this.previousState?.answersGiven?.length + 1) || 1;
 
     return {
       type: 'question',

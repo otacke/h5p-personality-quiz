@@ -41,7 +41,7 @@ export default class XAPI {
     else if (verb === 'progressed') {
       const position = (this.content) ?
         this.content?.getCurrentPosition() + 1 :
-        (this.previousState.answersGiven.length + 1) || 0;
+        (this.previousState?.answersGiven?.length + 1) || 1;
 
       xAPIEvent.data.statement.object.definition
         .extensions['http://id.tincanapi.com/extension/ending-point'] =

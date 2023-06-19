@@ -56,6 +56,7 @@ export default class QuestionScreen {
     // Panels
     this.panels = this.params.questions.map((question, questionIndex) => {
       const panel = new Panel({
+        dictionary: this.params.dictionary,
         globals: this.params.globals,
         appearance: this.params.appearance,
         image: question.image,

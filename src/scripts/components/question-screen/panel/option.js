@@ -51,9 +51,6 @@ export default class Option {
     this.button.classList.add('h5p-personality-quiz-answer-option-button');
 
     this.button.addEventListener('click', () => {
-      // TODO: Find a way to prevent button state being read when it is disabled
-      this.button.blur();
-
       window.setTimeout(() => {
         if (this.params.animation) {
           this.button.classList.add('animate');
