@@ -28,7 +28,7 @@ export default class ResultScreen {
     }, callbacks);
 
     this.ariaText = '';
-    this.resultText = this.params.l10n.notFinished;
+    this.resultPersonality = this.params.l10n.notFinished;
 
     this.buildDOM();
   }
@@ -121,7 +121,7 @@ export default class ResultScreen {
    * Reset.
    */
   reset() {
-    this.resultText = this.params.l10n.notFinished;
+    this.resultPersonality = this.params.l10n.notFinished;
   }
 
   /**
@@ -141,7 +141,7 @@ export default class ResultScreen {
    */
   setContent(params = {}) {
     this.ariaText = `${this.params.a11y.resultsTitle} ${params.name}`;
-    this.resultText = params.name;
+    this.resultPersonality = params.name;
     this.resultDescription = params.description;
     this.image = params.image;
 
@@ -209,12 +209,23 @@ export default class ResultScreen {
   }
 
   /**
+   * Get current result state.
+   * Required, because the result may be randomly chosen on equal scores.
+   * @returns {string|null} Current result state.
+   */
+  getCurrentState() {
+    return (this.resultPersonality !== this.params.l10n.notFinished) ?
+      this.resultPersonality :
+      null;
+  }
+
+  /**
    * Get results for result screen.
    * @returns {object} Results.
    */
   getResults() {
     return {
-      personality: this.resultText,
+      personality: this.resultPersonality,
       description: this.resultDescription,
       image: this.image
     };

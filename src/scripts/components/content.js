@@ -196,9 +196,12 @@ export default class Content {
    * @returns {object} Current state.
    */
   getCurrentState() {
+    const results = this.resultScreen.getCurrentState();
+
     return {
       scores: this.scores,
-      answersGiven: this.answersGiven
+      answersGiven: this.answersGiven,
+      ...(results && { results: results })
     };
   }
 
@@ -284,9 +287,11 @@ export default class Content {
       Math.floor(Math.random() * winnerIndexes.length)
     ];
 
-    this.params.globals.get('triggerXAPIEvent')('completed');
+    if (!this.resultScreen.getCurrentState()) {
+      this.resultScreen.setContent(this.params.personalities[winnerIndex]);
+    }
 
-    this.resultScreen.setContent(this.params.personalities[winnerIndex]);
+    this.params.globals.get('triggerXAPIEvent')('completed');
 
     if (this.params.delegateResults) {
       return;
@@ -341,13 +346,24 @@ export default class Content {
     this.answersGiven = this.params.previousState.answersGiven ?? [];
 
     this.questionScreen.reset({ answersGiven: this.answersGiven });
-
-    // Only use previous state for first call to reset after initialization
-    this.params.previousState = {};
-
     this.wheelOfFortune?.hide();
     this.resultScreen.hide();
     this.resultScreen.reset();
+
+    /*
+     * Result may be chosen randomly on equal scores for personalities, so
+     * use saved result if present.
+     */
+    if (this.params.previousState.results) {
+      this.resultScreen.setContent(
+        this.params.personalities.find((personality) => {
+          return personality.name === this.params.previousState.results;
+        })
+      );
+    }
+
+    // Only use previous state for first call to reset after initialization
+    this.params.previousState = {};
 
     if (params.showInstantly) {
       this.questionScreen.show({
