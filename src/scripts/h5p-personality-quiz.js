@@ -323,6 +323,22 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
   }
 
   /**
+   * Get context data.
+   * Contract used for confusion report.
+   * @returns {object} Context data.
+   */
+  getContext() {
+    const position = (this.content) ?
+      this.content?.getCurrentPosition() + 1 :
+      (this.previousState.answersGiven.length + 1) || 0;
+
+    return {
+      type: 'question',
+      value: position
+    };
+  }
+
+  /**
    * Get results for content.
    * @returns {object} Results.
    */
