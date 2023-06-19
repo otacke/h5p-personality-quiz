@@ -111,7 +111,7 @@ export default class QuestionScreen {
     const lastQuestionIndex = params.answersGiven.length;
 
     this.panels.forEach((panel, index) => {
-      if (index === lastQuestionIndex && params.focus) {
+      if (index === lastQuestionIndex) {
         this.params.globals.get('triggerXAPIEvent')('progressed');
       }
 

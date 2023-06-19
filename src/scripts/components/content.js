@@ -242,8 +242,6 @@ export default class Content {
       focus: true
     });
 
-    this.params.globals.get('triggerXAPIEvent')('progressed');
-
     this.params.globals.get('resize')();
   }
 
@@ -287,11 +285,11 @@ export default class Content {
       Math.floor(Math.random() * winnerIndexes.length)
     ];
 
+    // Was already completed before
     if (!this.resultScreen.getCurrentState()) {
       this.resultScreen.setContent(this.params.personalities[winnerIndex]);
+      this.params.globals.get('triggerXAPIEvent')('completed');
     }
-
-    this.params.globals.get('triggerXAPIEvent')('completed');
 
     if (this.params.delegateResults) {
       return;

@@ -39,9 +39,13 @@ export default class XAPI {
         this.content?.getResults()?.personality;
     }
     else if (verb === 'progressed') {
+      const position = (this.content) ?
+        this.content?.getCurrentPosition() + 1 :
+        this.previousState.answersGiven.length + 1;
+
       xAPIEvent.data.statement.object.definition
         .extensions['http://id.tincanapi.com/extension/ending-point'] =
-          this.content?.getCurrentPosition() + 1;
+          position;
     }
 
     return xAPIEvent;
