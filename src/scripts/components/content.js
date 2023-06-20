@@ -34,6 +34,11 @@ export default class Content {
       });
     });
 
+    this.scores = this.params.previousState.scores ??
+      new Array(this.params.personalities.length).fill(0);
+
+    this.answersGiven = this.params.previousState.answersGiven ?? [];
+
     const done = this.buildDOM();
     if (!done) {
       return;
