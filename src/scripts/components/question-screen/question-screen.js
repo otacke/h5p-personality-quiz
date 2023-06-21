@@ -109,6 +109,9 @@ export default class QuestionScreen {
   show(params = {}) {
     params = Util.extend({ answersGiven: [] }, params);
 
+    // Prevent from taking focus on load
+    params.focus = params.focus && document.activeElement !== document.body;
+
     const lastQuestionIndex = params.answersGiven.length;
 
     this.panels.forEach((panel, index) => {
