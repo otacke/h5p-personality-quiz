@@ -348,10 +348,10 @@ export default class Content {
 
     this.answersGiven = this.params.previousState.answersGiven ?? [];
 
-    this.questionScreen.reset({ answersGiven: this.answersGiven });
+    this.questionScreen?.reset({ answersGiven: this.answersGiven });
     this.wheelOfFortune?.hide();
-    this.resultScreen.hide();
-    this.resultScreen.reset();
+    this.resultScreen?.hide();
+    this.resultScreen?.reset();
 
     /*
      * Result may be chosen randomly on equal scores for personalities, so
