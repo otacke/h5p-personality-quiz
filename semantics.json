@@ -412,11 +412,10 @@
         "description": "Message when the author did not enter enough valid personalities."
       },
       {
-        "label": "Start",
+        "label": "Label of \"Start\" button",
         "name": "start",
         "type": "text",
-        "default": "Start",
-        "description": "Label of \"Start\" button."
+        "default": "Start"
       },
       {
         "label": "Text in progress bar",

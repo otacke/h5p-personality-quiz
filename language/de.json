@@ -217,9 +217,8 @@
           "description": "Nachricht, wenn der/die Autor*in nicht genügend gültige Persönlichkeitstypen eingegeben hat."
         },
         {
-          "label": "Start",
-          "default": "Start",
-          "description": "Beschriftung ders \"Start\"-Buttons."
+          "label": "Beschriftung des \"Start\"-Buttons",
+          "default": "Start"
         },
         {
           "label": "Text im Fortschrittsbalken",
