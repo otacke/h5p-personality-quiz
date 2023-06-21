@@ -173,11 +173,11 @@
       "fields": [
         {
           "label": "Zeige Animationen",
-          "description": "Wähle ab, um alle Animationen auszuschalten."
+          "description": "Wähle an, um Animationen einzuschalten."
         },
         {
           "label": "Zeige Fortschrittsbalken",
-          "description": "Wähle ab, um Fortschrittsbalken zu verbergen."
+          "description": "Wähle an, um Fortschrittsbalken anzuzeigen."
         },
         {
           "label": "Visuelles Erscheinungsbild",

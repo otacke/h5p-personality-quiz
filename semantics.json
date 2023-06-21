@@ -339,14 +339,14 @@
         "type": "boolean",
         "label": "Show animations",
         "default": true,
-        "description": "Uncheck to turn off all animations."
+        "description": "Check to turn on animations."
       },
       {
         "name": "showProgressBar",
         "type": "boolean",
         "label": "Show progress bar",
         "default": true,
-        "description": "Uncheck to hide progress bar."
+        "description": "Check to show progress bar."
       },
       {
         "name": "appearance",

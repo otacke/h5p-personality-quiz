@@ -172,11 +172,11 @@
       "fields": [
         {
           "label": "Show animations",
-          "description": "Uncheck to turn off all animations."
+          "description": "Check to turn on animations."
         },
         {
           "label": "Show progress bar",
-          "description": "Uncheck to hide progress bar."
+          "description": "Check to show progress bar."
         },
         {
           "label": "Visual appearance",
