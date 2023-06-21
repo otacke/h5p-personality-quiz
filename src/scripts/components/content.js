@@ -201,6 +201,10 @@ export default class Content {
    * @returns {object} Current state.
    */
   getCurrentState() {
+    if (!this.resultScreen) {
+      return {}; // Not ready yet
+    }
+
     const results = this.resultScreen.getCurrentState();
 
     return {
@@ -235,7 +239,7 @@ export default class Content {
    * @returns {object} Results.
    */
   getResults() {
-    return this.resultScreen.getResults();
+    return this.resultScreen?.getResults() ?? {};
   }
 
   /**
@@ -343,6 +347,10 @@ export default class Content {
    * @param {boolean} [params.focus] If true, set focus.
    */
   reset(params = {}) {
+    if (!this.questionScreen) {
+      return; // Not set up
+    }
+
     this.scores = this.params.previousState.scores ??
       new Array(this.params.personalities.length).fill(0);
 
