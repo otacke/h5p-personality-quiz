@@ -67,7 +67,7 @@ export default class Option {
       this.callbacks.onCompleted();
     });
 
-    //Image
+    // Image
     if (this.params.mode === 'image') {
       const image = document.createElement('img');
       image.classList.add('h5p-personality-quiz-answer-option-button-image');
