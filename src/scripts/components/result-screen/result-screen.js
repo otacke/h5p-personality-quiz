@@ -140,6 +140,8 @@ export default class ResultScreen {
    * @param {string} [params.image] Image data.
    */
   setContent(params = {}) {
+    params.name = Util.purifyHTML(params.name);
+
     this.ariaText = `${this.params.a11y.resultsTitle} ${params.name}`;
     this.resultPersonality = params.name;
     this.resultDescription = params.description;

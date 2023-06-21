@@ -23,6 +23,8 @@ export default class Option {
       image: {}
     }, params);
 
+    this.params.text = Util.purifyHTML(this.params.text);
+
     this.callbacks = Util.extend({
       onClicked: () => {},
       onCompleted: () => {}

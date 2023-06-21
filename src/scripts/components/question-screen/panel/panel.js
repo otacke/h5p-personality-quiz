@@ -25,6 +25,8 @@ export default class Panel {
       answerOptions: []
     }, params);
 
+    this.params.questionText = Util.purifyHTML(this.params.questionText);
+
     this.callbacks = Util.extend({
       onAnswerGiven: () => {},
       onCompleted: () => {}
