@@ -114,7 +114,6 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
    * @param {boolean} [params.focus] If true. set focus.
    */
   run(params) {
-    // TODO: Check params needed
     this.content.run(params);
   }
 
