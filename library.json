@@ -3,7 +3,7 @@
   "description": "Create a personality quiz and test which Game of Thrones or Hogwarts House your friends belong in.",
   "majorVersion": 1,
   "minorVersion": 1,
-  "patchVersion": 1,
+  "patchVersion": 2,
   "runnable": 1,
   "author": "Oliver Tacke, Lumenia AS",
   "license": "MIT",
