@@ -123,7 +123,10 @@ export default class Option {
    */
   focus(params = {}) {
     if (params.scrollIntoView) {
-      this.button.scrollIntoView({ behavior: 'smooth' });
+      this.button.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
 
       window.setTimeout(() => {
         this.button.focus();
