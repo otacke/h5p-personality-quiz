@@ -36,6 +36,7 @@ export default class FocusCatcher {
    * @param {string} [params.message] Message to read when focus is caught.
    */
   catch(params = {}) {
+    return;
     this.dom.setAttribute('tabindex', '0');
 
     if (params.message) {

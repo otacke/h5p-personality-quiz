@@ -169,12 +169,12 @@ export default class Panel {
       window.setTimeout(() => {
         this.questionText.innerText = this.params.questionText;
 
-        if (params.focus) {
-          this.questionText.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-          });
-        }
+        // if (params.focus) {
+        //   this.questionText.scrollIntoView({
+        //     behavior: 'smooth',
+        //     block: 'center'
+        //   });
+        // }
 
         window.setTimeout(() => {
           this.optionWrapper.classList.remove('display-none');

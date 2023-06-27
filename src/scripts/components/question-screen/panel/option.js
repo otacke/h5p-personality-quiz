@@ -122,18 +122,18 @@ export default class Option {
    * @param {boolean} [params.scrollIntoView] If true, scroll into view first.
    */
   focus(params = {}) {
-    if (params.scrollIntoView) {
-      this.button.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
+    // if (params.scrollIntoView) {
+    //   this.button.scrollIntoView({
+    //     behavior: 'smooth',
+    //     block: 'center'
+    //   });
 
-      window.setTimeout(() => {
-        this.button.focus();
-      }, 500); // Let scroll first
+    //   window.setTimeout(() => {
+    //     this.button.focus();
+    //   }, 500); // Let scroll first
 
-      return;
-    }
+    //   return;
+    // }
 
     this.button.focus();
   }
