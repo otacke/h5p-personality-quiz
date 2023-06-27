@@ -206,9 +206,10 @@ export default class Panel {
 
   /**
    * Focus.
+   * @param {object} [params] Parameters.
    */
-  focus() {
-    this.options[0]?.focus();
+  focus(params) {
+    this.options[0]?.focus(params);
   }
 
   /**
