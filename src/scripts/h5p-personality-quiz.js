@@ -246,7 +246,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
    */
   sanitizePersonalityOption(value) {
     let name, score;
-    if (value.match(/=-?\d+$/)) {
+    if (value.match(/=[-+]?\d+$/)) {
       const segments = value.split('=');
       score = segments.pop();
       name = segments.join('=');
