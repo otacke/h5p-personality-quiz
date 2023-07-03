@@ -1,0 +1,75 @@
+.wheel-of-fortune {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  opacity: 1;
+  padding: 1em;
+  transition: opacity ease-in-out 1s;
+
+  .wheel-of-fortune-wheel {
+    height: 25rem;
+    width: 100%;
+
+    .wheel-of-fortune-backdrop {
+      fill: #ffffff;
+    }
+
+    --color-wheel-of-fortune-indicator: #eeeeee;
+
+    .wheel-of-fortune-segments {
+      transform: translate(50%, 50%);
+
+      .wheel-of-fortune-segment {
+        stroke: #888888;
+        stroke-opacity: 0.5;
+        stroke-width: 0.25;
+      }
+    }
+
+    .wheel-of-fortune-indicator-knob {
+      fill: var(--color-wheel-of-fortune-indicator);
+    }
+
+    .wheel-of-fortune-indicator {
+      fill: var(--color-wheel-of-fortune-indicator);
+    }
+  }
+
+  .wheel-of-fortune-button {
+    background-color: var(--color-button-background);
+    background-size: cover;
+    border: 0;
+    border-radius: 3px;
+    color: var(--color-button-text);
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0.5rem 2.5rem;
+    text-align: center;
+    text-decoration: none solid var(--color-button-text);
+
+    &:hover {
+      background-color: var(--color-button-hover);
+      background-size: cover;
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: var(--color-button-active);
+      background-size: cover;
+    }
+
+    &:focus {
+      outline-style: double;
+    }
+  }
+
+  &.display-none {
+    display: none;
+  }
+
+  &.fade-out {
+    opacity: 0;
+  }
+}

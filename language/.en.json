@@ -1,0 +1,266 @@
+{
+  "semantics": [
+    {
+      "label": "Show title screen",
+      "description": "If checked, a title screen will show up when starting."
+    },
+    {
+      "label": "Title Screen",
+      "fields": [
+        {
+          "label": "Introduction",
+          "default": "<p style=\"text-align: center;\"></p>"
+        },
+        {
+          "label": "Title screen medium"
+        }
+      ]
+    },
+    {
+      "label": "Personalities",
+      "fields": [
+        {
+          "label": "Personality",
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "entity": "personality",
+          "field": {
+            "label": "Personality",
+            "fields": [
+              {
+                "label": "Personality name",
+                "description": "The personality name will be used to associate answers with their respective personalities."
+              },
+              {
+                "label": "Description"
+              },
+              {
+                "label": "Image",
+                "fields": [
+                  {
+                    "label": "Image",
+                    "description": "Optional image to display on the result screen."
+                  },
+                  {
+                    "label": "Alternative text",
+                    "description": "Alternative text for screen readers."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Dummy"
+        }
+      ]
+    },
+    {
+      "label": "Questions",
+      "fields": [
+        {
+          "label": "Questions",
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "entity": "question",
+          "field": {
+            "label": "Question",
+            "fields": [
+              {
+                "label": "Question"
+              },
+              {
+                "label": "Image",
+                "fields": [
+                  {
+                    "label": "Image",
+                    "description": "Optional image displayed above the question text."
+                  },
+                  {
+                    "label": "Alternative text",
+                    "description": "Alternative text for screen readers."
+                  }
+                ]
+              },
+              {
+                "label": "Answers",
+                "entity": "answer",
+                "field": {
+                  "label": "Answer",
+                  "fields": [
+                    {
+                      "label": "Option text"
+                    },
+                    {
+                      "label": "Personalities",
+                      "description": "A comma separated list of personality names associated with this answer.",
+                      "importantDescription": {
+                        "description": "<ul><li>Add the name of a personality that should receive a score of +1 when the option is chosen.</li><li>You can specify other scores including negative values by adding an equality sign (=) followed by the score.</li><li>Personality names need to be separate by a comma (,).</li></ul>",
+                        "example": "apple, mango=4, strawberry=-1"
+                      }
+                    },
+                    {
+                      "label": "Image",
+                      "fields": [
+                        {
+                          "label": "Image",
+                          "description": "Optional image. All options for this question need an image in order to show up."
+                        },
+                        {
+                          "label": "Alternative text",
+                          "description": " Alternative text for screen readers."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "label": "Dummy"
+        }
+      ]
+    },
+    {
+      "label": "Result screen",
+      "fields": [
+        {
+          "label": "Animation",
+          "description": "The wheel of fortune animation will only use the images associated with personalities if all personalities have an image associated with them.",
+          "options": [
+            {
+              "label": "None"
+            },
+            {
+              "label": "Fade in"
+            },
+            {
+              "label": "Wheel of Fortune"
+            }
+          ]
+        },
+        {
+          "label": "Show personality name"
+        },
+        {
+          "label": "Show description"
+        },
+        {
+          "label": "Personality image position",
+          "description": "Set whether an image associated with the resulting personality should be displayed in the background or inline between the personality name and the description.",
+          "options": [
+            {
+              "label": "Background"
+            },
+            {
+              "label": "Inline"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Visual settings",
+      "fields": [
+        {
+          "label": "Show animations",
+          "description": "Check to turn on animations."
+        },
+        {
+          "label": "Show progress bar",
+          "description": "Check to show progress bar."
+        },
+        {
+          "label": "Visual appearance",
+          "description": "Set what the overall appearance should be like.",
+          "options": [
+            {
+              "label": "Classic"
+            },
+            {
+              "label": "Chat"
+            }
+          ]
+        },
+        {
+          "label": "Base color",
+          "description": "Set the base color that will determine the color for the buttons, the button fill animations and some other visual elements.",
+          "default": "#1a73d9"
+        },
+        {
+          "label": "Progressbar Color",
+          "description": "Set the color of the progress bar.",
+          "default": "#1a73d9"
+        }
+      ]
+    },
+    {
+      "label": "User interface",
+      "fields": [
+        {
+          "label": "Not enough valid questions",
+          "default": "It seems that there is no valid question set. Please try checking for valid personality names.",
+          "description": "Message when the author did not enter enough valid questions."
+        },
+        {
+          "label": "Not enough valid personalities",
+          "default": "It seems that there are not enough valid personalities set. Please try checking for missing names or duplicate names.",
+          "description": "Message when the author did not enter enough valid personalities."
+        },
+        {
+          "label": "Label of \"Start\" button",
+          "default": "Start"
+        },
+        {
+          "label": "Text in progress bar",
+          "default": "@current of @total",
+          "description": "@current and @total are placeholders and will be replaced with the respective values."
+        },
+        {
+          "label": "Skip",
+          "default": "Skip",
+          "description": "Label of \"Skip\" button."
+        },
+        {
+          "label": "Restart",
+          "default": "Restart",
+          "description": "Label of \"Restart\" button."
+        },
+        {
+          "label": "Not finished",
+          "default": "The quiz was not yet finished.",
+          "description": "Used as report answer if results are requested prematurely."
+        }
+      ]
+    },
+    {
+      "label": "Accessibility texts",
+      "fields": [
+        {
+          "label": "Wheel of fortune started",
+          "default": "The wheel of fortune started spinning. Please wait a moment."
+        },
+        {
+          "label": "Title screen opened",
+          "default": "The title screen was opened."
+        },
+        {
+          "label": "Progress bar",
+          "default": "Progress bar"
+        },
+        {
+          "label": "Results title",
+          "default": "Here are your results."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+@import "@styles/main";
+
+.h5p-personality-quiz-question-screen {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  .h5p-personality-quiz-panel-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    width: min(100%, 60em);
+  }
+
+  &.display-none {
+    display: none;
+  }
+}

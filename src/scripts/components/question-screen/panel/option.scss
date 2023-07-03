@@ -1,0 +1,145 @@
+@import "@styles/main";
+
+@keyframes button-fill {
+  from { background-position: 100%; color: #000000; }
+  to { background-position: 0%; color: var(--color-button-text-active); }
+}
+
+.h5p-personality-quiz-answer-option {
+  height: 100%;
+
+  .h5p-personality-quiz-answer-option-button {
+    align-items: center;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    height: 100%;
+    line-height: 1rem;
+    padding: 0;
+
+    .h5p-personality-quiz-answer-option-button-image {
+      max-height: 15em;
+      max-width: 15em;
+      object-fit: cover;
+    }
+
+    .h5p-personality-quiz-answer-option-button-text {
+      width: 100%;
+    }
+
+    &:not([disabled]):hover {
+      cursor: pointer;
+    }
+  }
+
+  &.appearance-classic {
+    .h5p-personality-quiz-answer-option-button {
+      align-items: center;
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      font-size: 1rem;
+      height: 100%;
+      line-height: 1rem;
+      padding: 0;
+      width: 100%;
+
+      .h5p-personality-quiz-answer-option-button-image {
+        flex-grow: 1;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .h5p-personality-quiz-answer-option-button-text {
+        background: linear-gradient(to right, var(--color-button-active) 50%, #dddddd 50%) 100% center / 200% 100%;
+        border-left: 5px solid var(--color-button-active);
+        color: #000000;
+        padding: 0.25rem 0;
+        text-align: center;
+
+        &.selected {
+          background-position: 0%; color: var(--color-button-text-active);
+        }
+
+        &.animate {
+          animation-duration: 0.9s;
+          animation-name: button-fill;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+
+    &:not(.has-image) {
+      &:not([disabled]):hover {
+        .h5p-personality-quiz-answer-option-button-text:not(.animate) {
+          background: #ececec;
+        }
+      }
+    }
+
+    &.has-image {
+      .h5p-personality-quiz-answer-option-button {
+        border: 4px solid #dbe2e8;
+        border-radius: 4px;
+        padding: 1em;
+
+        &:not([disabled]):hover {
+          background-color: var(--color-button-pale);
+          border-style: dotted;
+          border-color: var(--color-button-background)
+        }
+      }
+    }
+  }
+
+  &.appearance-chat {
+    .h5p-personality-quiz-answer-option-button {
+      background-color: #eeeeee;
+      border-radius: 1rem 1rem 0 1rem;
+      box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+      color: inherit;
+      position: relative;
+      text-align: left;
+      width: fit-content;
+
+      .h5p-personality-quiz-answer-option-button-image {
+        border-radius: 1rem 1rem 0 0;
+        height: 10em;
+        width: 15em;
+      }
+
+      .h5p-personality-quiz-answer-option-button-text {
+        border-radius: 0 0 0 1rem;
+        font-weight: normal;
+        padding: 0.5rem 1rem;
+        text-align: left;
+
+        &.selected {
+          background-color: var(--color-button-active);
+          color: var(--color-button-text-active);
+        }
+      }
+
+      &:not([disabled]):hover {
+        .h5p-personality-quiz-answer-option-button-text:not(.animate) {
+          background: #cccccc;
+        }
+      }
+    }
+
+    &.has-image {
+      .h5p-personality-quiz-answer-option-button-text {
+        border-radius: 0 0 0 1rem;
+      }
+    }
+
+    &:not(.has-image) {
+      .h5p-personality-quiz-answer-option-button-text {
+        border-radius: 1rem 1rem 0 1rem;
+      }
+    }
+  }
+}

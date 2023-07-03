@@ -1,0 +1,15 @@
+@import "@styles/main";
+
+.h5p-personality-quiz-message-box {
+  margin: 0;
+  padding: 0;
+
+  &.display-none {
+    display: none;
+  }
+
+  .h5p-personality-quiz-message-box-message {
+    margin: 0;
+    padding: 0;
+  }
+}

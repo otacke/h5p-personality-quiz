@@ -1,289 +1,488 @@
 [
-    {
-        "name": "titleScreen",
-        "type": "group",
-        "label": "Title Screen",
-        "expanded": true,
-        "fields": [
-            {
-                "name": "title",
-                "type": "group",
-                "label": "Title",
-                "expanded": true,
-                "fields": [
-                    {
-                        "name": "text",
-                        "type": "text",
-                        "label": "Title"
-                    },
-                    {
-                        "name": "display",
-                        "type": "boolean",
-                        "label": "Display Title",
-                        "description": "Wether or not to show the title as a headline at the start of the personality quiz.",
-                        "default": true
-                    }
-                ]
-            },
-            {
-                "name": "image",
-                "type": "group",
-                "label": "Optional: Image",
-                "optional": true,
-                "fields": [
-                    {
-                        "name": "file",
-                        "type": "image",
-                        "label": "File"
-                    },
-                    {
-                        "name": "alt",
-                        "type": "text",
-                        "label": "Alt text",
-                        "description": "Alternative text if the browser is unable to load the image."
-                    }
-                ]
-            },
-            {
-                "name": "skip",
-                "label": "Skip",
-                "type": "boolean",
-                "description": "Select if you want the quiz to start on the first question instead of the title screen.",
-                "default": false
-            }
+  {
+    "name": "showTitleScreen",
+    "label": "Show title screen",
+    "description": "If checked, a title screen will show up when starting.",
+    "type": "boolean",
+    "default": false,
+    "optional": true
+  },
+  {
+    "name": "titleScreen",
+    "type": "group",
+    "label": "Title Screen",
+    "expanded": false,
+    "fields": [
+      {
+        "name": "titleScreenIntroduction",
+        "label": "Introduction",
+        "type": "text",
+        "optional": true,
+        "widget": "html",
+        "enterMode": "div",
+        "tags": [
+          "sub",
+          "sup",
+          "strong",
+          "em",
+          "p",
+          "code",
+          "u",
+          "del",
+          "a",
+          "ul",
+          "ol",
+          "hr",
+          "pre",
+          "code"
+        ],
+        "font": {
+          "size": true,
+          "color": true,
+          "background": true
+        },
+        "default": "<p style=\"text-align: center;\"></p>"
+      },
+      {
+        "name": "titleScreenMedium",
+        "label": "Title screen medium",
+        "type": "library",
+        "optional": true,
+        "options": [
+          "H5P.Image 1.1",
+          "H5P.Video 1.6"
         ]
-    },
-    {
-        "name": "resultScreen",
-        "type": "group",
-        "label": "Result screen",
-        "fields": [
-            {
-                "name": "animation",
-                "type": "select",
-                "label": "Animation",
-                "description": "The Wheel of Fortune animation will only use the images associated with personalities if ALL personalities has an image associated with them.",
-                "default": "none",
-                "options": [
-                    {
-                        "label": "None",
-                        "value": "none"
-                    },
-                    {
-                        "label": "Fade in",
-                        "value": "fade-in"
-                    },
-                    {
-                        "label": "Wheel of Fortune",
-                        "value": "wheel"
-                    }
-                ]
-            },
-            {
-                "name": "displayTitle",
-                "type": "boolean",
-                "label": "Display personality title?",
-                "default": true
-            },
-            {
-                "name": "displayDescription",
-                "type": "boolean",
-                "label": "Display description?",
-                "default": true
-            },
-            {
-                "name": "imagePosition",
-                "type": "select",
-                "label": "Personality Image Position",
-                "description": "Choose how to display the image, if there is any, of the result personality. Background will fill the entire H5P container and center the image. Inline will put the image as an image element between the result personality name and description.",
-                "default": "background",
-                "options": [
-                    {
-                        "value": "background",
-                        "label": "Background"
-                    },
-                    {
-                        "value": "inline",
-                        "label": "Inline"
-                    }
-                ]
-            }
-        ]
-    },
-    {
+      }
+    ],
+    "widget": "showWhen",
+    "showWhen": {
+      "rules": [
+        {
+          "field": "showTitleScreen",
+          "equals": true
+        }
+      ]
+    }
+  },
+  {
+    "name": "personalitiesGroup",
+    "type": "group",
+    "label": "Personalities",
+    "importance": "high",
+    "fields": [
+      {
         "name": "personalities",
         "type": "list",
         "label": "Personality",
+        "importance": "high",
+        "widgets": [
+          {
+            "name": "VerticalTabs",
+            "label": "Default"
+          }
+        ],
         "entity": "personality",
         "min": 2,
-        "max": 10,
         "field": {
-            "name": "personality",
-            "type": "group",
-            "label": "Personality",
-            "fields": [
+          "name": "personality",
+          "type": "group",
+          "label": "Personality",
+          "fields": [
+            {
+              "name": "name",
+              "type": "text",
+              "label": "Personality name",
+              "description": "The personality name will be used to associate answers with their respective personalities."
+            },
+            {
+              "name": "description",
+              "type": "text",
+              "label": "Description",
+              "widget": "html",
+              "enterMode": "div",
+              "tags": [
+                "sub",
+                "sup",
+                "strong",
+                "em",
+                "p",
+                "code",
+                "u",
+                "del",
+                "a",
+                "ul",
+                "ol",
+                "hr",
+                "pre",
+                "code"
+              ],
+              "font": {
+                "size": true,
+                "color": true,
+                "background": true
+              },
+              "optional": true
+            },
+            {
+              "name": "image",
+              "type": "group",
+              "label": "Image",
+              "optional": true,
+              "importance": "low",
+              "fields": [
                 {
-                    "name": "name",
-                    "type": "text",
-                    "label": "Personality name",
-                    "description": "The personality name will be used to associate answers with their respective personalities."
+                  "name": "file",
+                  "type": "image",
+                  "label": "Image",
+                  "description": "Optional image to display on the result screen."
                 },
                 {
-                    "name": "description",
-                    "type": "text",
-                    "label": "Description",
-                    "maxLength": 450,
-                    "widget": "textarea"
-                },
-                {
-                    "name": "image",
-                    "type": "group",
-                    "label": "Optional: Image",
-                    "optional": true,
-                    "fields": [
-                        {
-                            "name": "file",
-                            "type": "image",
-                            "label": "Image",
-                            "description": "An image to display on the result screen."
-                        },
-                        {
-                            "name": "alt",
-                            "type": "text",
-                            "label": "Alt text",
-                            "description": "Alternative text if the browser is unable to load the image."
-                        }
-                    ]
+                  "name": "alt",
+                  "type": "text",
+                  "label": "Alternative text",
+                  "description": "Alternative text for screen readers."
                 }
-            ]
+              ]
+            }
+          ]
         }
-    },
-    {
+      },
+      {
+        "name": "dummy",
+        "type": "boolean",
+        "label": "Dummy",
+        "optional": true,
+        "widget": "none"
+      }
+    ]
+  },
+  {
+    "name": "questionsGroup",
+    "type": "group",
+    "label": "Questions",
+    "expanded": true,
+    "importance": "high",
+    "fields": [
+      {
         "name": "questions",
         "type": "list",
         "label": "Questions",
+        "importance": "high",
+        "widgets": [
+          {
+            "name": "VerticalTabs",
+            "label": "Default"
+          }
+        ],
         "entity": "question",
         "field": {
-            "name": "question",
-            "type": "group",
-            "label": "Question",
-            "fields": [
+          "name": "question",
+          "type": "group",
+          "label": "Question",
+          "fields": [
+            {
+              "name": "text",
+              "type": "text",
+              "label": "Question"
+            },
+            {
+              "name": "image",
+              "type": "group",
+              "label": "Image",
+              "importance": "low",
+              "optional": true,
+              "fields": [
                 {
+                  "name": "file",
+                  "type": "image",
+                  "label": "Image",
+                  "description": "Optional image displayed above the question text."
+                },
+                {
+                  "name": "alt",
+                  "type": "text",
+                  "label": "Alternative text",
+                  "description": "Alternative text for screen readers."
+                }
+              ]
+            },
+            {
+              "name": "answers",
+              "type": "list",
+              "label": "Answers",
+              "importance": "high",
+              "entity": "answer",
+              "min": 2,
+              "field": {
+                "name": "answer",
+                "type": "group",
+                "label": "Answer",
+                "fields": [
+                  {
                     "name": "text",
                     "type": "text",
-                    "label": "Question"
-                },
-                {
+                    "label": "Option text"
+                  },
+                  {
+                    "name": "personality",
+                    "type": "text",
+                    "label": "Personalities",
+                    "description": "A comma separated list of personality names associated with this answer.",
+                    "widget": "importantDescription",
+                    "importantDescription": {
+                      "description": "<ul><li>Add the name of a personality that should receive a score of +1 when the option is chosen.</li><li>You can specify other scores including negative values by adding an equality sign (=) followed by the score.</li><li>Personality names need to be separate by a comma (,).</li></ul>",
+                      "example": "apple, mango=4, strawberry=-1",
+                      "floatingButton": false
+                    }
+                  },
+                  {
                     "name": "image",
                     "type": "group",
-                    "label": "Optional: Image",
-                    "description": "Image displayed at the top of the screen above or below the question text.",
+                    "label": "Image",
+                    "importance": "low",
                     "optional": true,
                     "fields": [
-                        {
-                            "name": "file",
-                            "type": "image",
-                            "label": "File"
-                        },
-                        {
-                            "name": "alt",
-                            "type": "text",
-                            "label": "Alt text",
-                            "description": "Alternative text if the browser is unable to load the image."
-                        }
+                      {
+                        "name": "file",
+                        "type": "image",
+                        "label": "Image",
+                        "description": "Optional image. All options for this question need an image in order to show up. No images will be shown in chat mode."
+                      },
+                      {
+                        "name": "alt",
+                        "type": "text",
+                        "label": "Alternative text",
+                        "description": " Alternative text for screen readers."
+                      }
                     ]
-                },
-                {
-                    "name": "answers",
-                    "type": "list",
-                    "label": "Answers",
-                    "entity": "answer",
-                    "min": 2,
-                    "max": 6,
-                    "field": {
-                        "name": "answer",
-                        "type": "group",
-                        "label": "Answer",
-                        "fields": [
-                            {
-                                "name": "text",
-                                "type": "text",
-                                "label": "text"
-                            },
-                            {
-                                "name": "personality",
-                                "type": "text",
-                                "label": "Personalities",
-                                "description": "A comma separated list of personality names associated with this answer."
-                            },
-                            {
-                                "name": "image",
-                                "type": "group",
-                                "description": "Images associated with answers will not show up unless all answers associated with a question has an image attached.",
-                                "label": "Optional: Image",
-                                "optional": true,
-                                "fields": [
-                                    {
-                                        "name": "file",
-                                        "type": "image",
-                                        "label": "File"
-                                    },
-                                    {
-                                        "name": "alt",
-                                        "type": "text",
-                                        "label": "Alt text",
-                                        "description": "Alternative text if the browser is unable to load the image."
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
+                  }
+                ]
+              }
+            }
+          ]
         }
-    },
-    {
-        "label": "Start",
-        "name": "startText",
-        "type": "text",
-        "default": "Start",
-        "description": "Text displayed on the start quiz button on the title card."
-    },
-    {
-        "label": "Progress text",
-        "name": "progressText",
-        "type": "text",
-        "default": "@question of @total",
-        "description": "Progress text, variables available: @question and @total. Example: '@question of @total'"
-    },
-    {
-        "name": "retakeText",
-        "label": "Retake",
-        "type": "text",
-        "default": "Retake the quiz",
-        "description": "Retake text"
-    },
-    {
-        "name": "animation",
+      },
+      {
+        "name": "dummy",
         "type": "boolean",
+        "label": "Dummy",
+        "optional": true,
+        "widget": "none"
+      }
+    ]
+  },
+  {
+    "name": "resultScreen",
+    "type": "group",
+    "label": "Result screen",
+    "fields": [
+      {
+        "name": "animation",
+        "type": "select",
         "label": "Animation",
+        "description": "The wheel of fortune animation will only use the images associated with personalities if all personalities have an image associated with them.",
+        "default": "none",
+        "options": [
+          {
+            "label": "None",
+            "value": "none"
+          },
+          {
+            "label": "Fade in",
+            "value": "fade-in"
+          },
+          {
+            "label": "Wheel of Fortune",
+            "value": "wheel"
+          }
+        ]
+      },
+      {
+        "name": "displayTitle",
+        "type": "boolean",
+        "label": "Show personality name",
+        "default": true
+      },
+      {
+        "name": "displayDescription",
+        "type": "boolean",
+        "label": "Show description",
+        "default": true
+      },
+      {
+        "name": "imagePosition",
+        "type": "select",
+        "label": "Personality image position",
+        "description": "Set whether an image associated with the resulting personality should be displayed in the background or inline between the personality name and the description.",
+        "default": "background",
+        "options": [
+          {
+            "value": "background",
+            "label": "Background"
+          },
+          {
+            "value": "inline",
+            "label": "Inline"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "visual",
+    "type": "group",
+    "importance": "low",
+    "label": "Visual settings",
+    "fields": [
+      {
+        "name": "isAnimationOn",
+        "type": "boolean",
+        "label": "Show animations",
         "default": true,
-        "description": "Uncheck to turn off all animation"
-    },
-    {
-        "name": "buttonColor",
+        "description": "Check to turn on animations."
+      },
+      {
+        "name": "showProgressBar",
+        "type": "boolean",
+        "label": "Show progress bar",
+        "default": true,
+        "description": "Check to show progress bar."
+      },
+      {
+        "name": "appearance",
+        "type": "select",
+        "label": "Visual appearance",
+        "description": "Set what the overall appearance should be like.",
+        "default": "classic",
+        "options": [
+          {
+            "value": "classic",
+            "label": "Classic"
+          },
+          {
+            "value": "chat",
+            "label": "Chat"
+          }
+        ]
+      },
+      {
+        "name": "colorButton",
         "type": "text",
-        "label": "Button Accent",
-        "description": "Change the color of the button borders and the animation color fill",
-        "default": "4D5DAA",
-        "widget": "colorSelector"
-    },
-    {
-        "name": "progressbarColor",
+        "label": "Base color",
+        "description": "Set the base color that will determine the color for the buttons, the button fill animations and some other visual elements.",
+        "default": "#1a73d9",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      },
+      {
+        "name": "colorProgressBar",
         "type": "text",
         "label": "Progressbar Color",
-        "description": "Determines the color of the progress bar",
-        "default": "38B755",
-        "widget": "colorSelector"
-    }
+        "description": "Set the color of the progress bar.",
+        "default": "#1a73d9",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "User interface",
+    "common": true,
+    "fields": [
+      {
+        "name": "noQuestions",
+        "label": "Not enough valid questions",
+        "type": "text",
+        "default": "It seems that there is no valid question set. Please try checking for valid personality names.",
+        "description": "Message when the author did not enter enough valid questions."
+      },
+      {
+        "name": "noPersonalities",
+        "label": "Not enough valid personalities",
+        "type": "text",
+        "default": "It seems that there are not enough valid personalities set. Please try checking for missing names or duplicate names.",
+        "description": "Message when the author did not enter enough valid personalities."
+      },
+      {
+        "label": "Label of \"Start\" button",
+        "name": "start",
+        "type": "text",
+        "default": "Start"
+      },
+      {
+        "label": "Text in progress bar",
+        "name": "currentOfTotal",
+        "type": "text",
+        "default": "@current of @total",
+        "description": "@current and @total are placeholders and will be replaced with the respective values."
+      },
+      {
+        "name": "skip",
+        "label": "Skip",
+        "type": "text",
+        "default": "Skip",
+        "description": "Label of \"Skip\" button."
+      },
+      {
+        "name": "reset",
+        "label": "Restart",
+        "type": "text",
+        "default": "Restart",
+        "description": "Label of \"Restart\" button."
+      },
+      {
+        "name": "notFinished",
+        "label": "Not finished",
+        "type": "text",
+        "default": "The quiz was not yet finished.",
+        "description": "Used as report answer if results are requested prematurely."
+      }
+    ]
+  },
+  {
+    "name": "a11y",
+    "type": "group",
+    "label": "Accessibility texts",
+    "common": true,
+    "fields": [
+      {
+        "name": "wheelStarted",
+        "label": "Wheel of fortune started",
+        "type": "text",
+        "default": "The wheel of fortune started spinning. Please wait a moment."
+      },
+      {
+        "name": "titleScreenWasOpened",
+        "label": "Title screen opened",
+        "type": "text",
+        "default": "The title screen was opened."
+      },
+      {
+        "name": "progressBar",
+        "label": "Progress bar",
+        "type": "text",
+        "default": "Progress bar"
+      },
+      {
+        "name": "resultsTitle",
+        "label": "Results title",
+        "type": "text",
+        "default": "Here are your results."
+      },
+      {
+        "name": "standby",
+        "label": "\"Stand\" by message",
+        "type": "text",
+        "default": "Stand by."
+      }
+    ]
+  }
 ]
