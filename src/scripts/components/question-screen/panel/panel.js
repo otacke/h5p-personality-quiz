@@ -1,7 +1,6 @@
 import Util from '@services/util';
 import Option from './option.js';
 import './panel.scss';
-import FocusCatcher from './focus-catcher.js';
 
 export default class Panel {
 
@@ -132,10 +131,6 @@ export default class Panel {
 
       listItem.append(optionInstance.getDOM());
     });
-
-    // Used instead of aria-live region to prevent reading button again
-    this.focusCatcher = new FocusCatcher();
-    this.dom.append(this.focusCatcher.getDOM());
   }
 
   /**
@@ -241,12 +236,6 @@ export default class Panel {
    * @param {number} index Index of option that was chosen.
    */
   handleOptionChosen(index) {
-    if (this.params.animation) {
-      this.focusCatcher.catch({
-        message: this.params.dictionary.get('a11y.standby')
-      });
-    }
-
     this.options.forEach((option) => {
       option.disable();
     });
