@@ -1,11 +1,11 @@
-import Util from '@services/util';
-import Dictionary from '@services/dictionary';
-import Globals from '@services/globals';
-import Screenreader from '@services/screenreader';
-import Content from '@components/content';
-import QuestionTypeContract from '@mixins/question-type-contract';
-import Sanitization from '@mixins/sanitization';
-import XAPI from '@mixins/xapi';
+import Util from '@services/util.js';
+import Dictionary from '@services/dictionary.js';
+import Globals from '@services/globals.js';
+import Screenreader from '@services/screenreader.js';
+import Content from '@components/content.js';
+import QuestionTypeContract from '@mixins/question-type-contract.js';
+import Sanitization from '@mixins/sanitization.js';
+import XAPI from '@mixins/xapi.js';
 import Color from 'color';
 import '@styles/h5p-personality-quiz.scss';
 

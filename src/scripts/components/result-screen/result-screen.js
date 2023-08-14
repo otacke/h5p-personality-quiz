@@ -1,4 +1,4 @@
-import Util from '@services/util';
+import Util from '@services/util.js';
 import './result-screen.scss';
 
 export default class ResultScreen {

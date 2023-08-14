@@ -1,9 +1,9 @@
-import Util from '@services/util';
-import MediaScreen from '@components/media-screen/media-screen';
-import MessageBoxHint from '@components/message-box/message-box-hint';
-import QuestionScreen from '@components/question-screen/question-screen';
-import ResultScreen from '@components/result-screen/result-screen';
-import WheelOfFortune from '@components/wheel-of-fortune/wheel-of-fortune';
+import Util from '@services/util.js';
+import MediaScreen from '@components/media-screen/media-screen.js';
+import MessageBoxHint from '@components/message-box/message-box-hint.js';
+import QuestionScreen from '@components/question-screen/question-screen.js';
+import ResultScreen from '@components/result-screen/result-screen.js';
+import WheelOfFortune from '@components/wheel-of-fortune/wheel-of-fortune.js';
 
 export default class Content {
 

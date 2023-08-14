@@ -19,28 +19,28 @@
   ],
   "author": "Oliver Tacke, Lumenia AS",
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
-    "@babel/cli": "^7.22.5",
-    "@babel/core": "^7.22.5",
-    "@babel/preset-env": "^7.22.5",
-    "babel-loader": "^9.1.2",
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "babel-loader": "^9.1.3",
     "css-loader": "^6.8.1",
-    "eslint": "^8.43.0",
-    "eslint-plugin-jsdoc": "^46.2.6",
+    "eslint": "^8.47.0",
+    "eslint-plugin-jsdoc": "^46.4.6",
     "mini-css-extract-plugin": "^2.7.6",
-    "regenerator-runtime": "^0.13.11",
     "resolve-url-loader": "^5.0.0",
-    "sass": "^1.63.5",
+    "sass": "^1.65.1",
     "sass-loader": "^13.3.2",
-    "stylelint": "^15.8.0",
-    "stylelint-config-recommended": "^12.0.0",
+    "stylelint": "^15.10.2",
+    "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-recommended-scss": "^12.0.0",
-    "webpack": "^5.87.0",
+    "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "color": "^4.2.3",
     "he": "^1.2.0"
   },
-  "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead"
+  "browserslist": "> 0.5%, last 3 versions, Firefox ESR, not dead"
 }

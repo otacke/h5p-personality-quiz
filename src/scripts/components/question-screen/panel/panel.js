@@ -1,4 +1,4 @@
-import Util from '@services/util';
+import Util from '@services/util.js';
 import Option from './option.js';
 import './panel.scss';
 

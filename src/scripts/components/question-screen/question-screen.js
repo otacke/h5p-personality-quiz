@@ -1,6 +1,6 @@
-import Util from '@services/util';
-import Panel from './panel/panel';
-import ProgressBar from './progress-bar/progress-bar';
+import Util from '@services/util.js';
+import Panel from './panel/panel.js';
+import ProgressBar from './progress-bar/progress-bar.js';
 import './question-screen.scss';
 
 export default class QuestionScreen {
