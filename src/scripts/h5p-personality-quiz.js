@@ -213,9 +213,13 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
 
   /**
    * Get current state.
-   * @returns {object} Current state.
+   * @returns {object|undefined} Current state.
    */
   getCurrentState() {
+    if (!this.getAnswerGiven()) {
+      return;
+    }
+
     return this.content?.getCurrentState();
   }
 
