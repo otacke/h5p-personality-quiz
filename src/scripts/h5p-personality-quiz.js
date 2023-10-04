@@ -217,7 +217,8 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
    */
   getCurrentState() {
     if (!this.getAnswerGiven()) {
-      return;
+      // Nothing relevant to store, but previous state in DB must be cleared after reset
+      return this.contentWasReset ? {} : undefined;
     }
 
     return this.content?.getCurrentState();
