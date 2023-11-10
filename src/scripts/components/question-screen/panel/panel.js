@@ -184,6 +184,10 @@ export default class Panel {
           this.focus();
         }); // Ensure option is visible
       }
+
+      window.requestAnimationFrame(() => {
+        this.params.globals.get('resize')();
+      });
     }
   }
 
