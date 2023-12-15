@@ -4,7 +4,6 @@
   "description": "Create a personality quiz and test which Game of Thrones or Hogwarts House your friends belong in.",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "stylelint './src/**/*.scss' && eslint './src/**/*.js'",
     "build": "webpack --mode=production",
     "watch": "webpack --watch --mode=development"
