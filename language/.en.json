@@ -8,8 +8,7 @@
       "label": "Title Screen",
       "fields": [
         {
-          "label": "Introduction",
-          "default": "<p style=\"text-align: center;\"></p>"
+          "label": "Introduction"
         },
         {
           "label": "Title screen medium"

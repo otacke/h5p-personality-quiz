@@ -8,8 +8,7 @@
       "label": "Titelbildschirm",
       "fields": [
         {
-          "label": "Einleitung",
-          "default": "<p style=\"text-align: center;\"></p>"
+          "label": "Einleitung"
         },
         {
           "label": "Titelbildschirm-Medium"
