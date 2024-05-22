@@ -79,6 +79,7 @@
       width: fit-content;
 
       .typing-animation-dots {
+        box-sizing: border-box;
         padding: calc(0.25rem + 1px) 0;
         height: 1rem;
 
