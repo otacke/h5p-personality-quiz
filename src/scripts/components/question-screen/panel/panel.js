@@ -48,7 +48,7 @@ export default class Panel {
     if (this.params.image?.file?.path) {
       const image = document.createElement('img');
       image.classList.add('h5p-personality-quiz-panel-image');
-      image.setAttribute('alt', this.params.image.file.alt ?? '');
+      image.setAttribute('alt', this.params.image.alt ?? '');
       image.addEventListener('load', () => {
         this.params.globals.get('resize')();
       });
