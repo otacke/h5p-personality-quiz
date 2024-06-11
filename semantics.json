@@ -137,10 +137,10 @@
                   "description": "Optional image to display on the result screen."
                 },
                 {
-                  "name": "alt",
+                  "name": "dummy",
                   "type": "text",
-                  "label": "Alternative text",
-                  "description": "Alternative text for screen readers."
+                  "label": "Dummy",
+                  "widget": "none"
                 }
               ]
             }

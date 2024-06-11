@@ -54,6 +54,14 @@ H5PUpgrades['H5P.PersonalityQuiz'] = (() => {
           if (parameters.personalities) {
             parameters.personalitiesGroup.personalities =
               parameters.personalities;
+
+            // Delete alt text from personality images that are not used anymore
+            for (let i = 0; i < parameters.personalitiesGroup.personalities.length; i++) {
+              if (parameters.personalitiesGroup.personalities[i].image) {
+                delete parameters.personalitiesGroup.personalities[i].image.alt;
+              }
+            }
+
             delete parameters.personalities;
           }
 

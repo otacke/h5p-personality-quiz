@@ -44,8 +44,8 @@
                     "description": "Optionales Bild, das auf dem Ergebnisbildschirm angezeigt werden soll."
                   },
                   {
-                    "label": "Alternativer Text",
-                    "description": "Alternativer Text für Bildschirmleser."
+                    "label": "Dummy",
+                    "description": "Dummy"
                   }
                 ]
               }

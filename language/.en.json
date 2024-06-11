@@ -44,8 +44,8 @@
                     "description": "Optional image to display on the result screen."
                   },
                   {
-                    "label": "Alternative text",
-                    "description": "Alternative text for screen readers."
+                    "label": "Dummy",
+                    "description": "Dummy"
                   }
                 ]
               }
