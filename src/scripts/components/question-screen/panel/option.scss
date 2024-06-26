@@ -60,6 +60,7 @@
         color: #000000;
         padding: 0.25rem 0;
         text-align: center;
+        word-break: break-all;
 
         &.selected {
           background-position: 0%; color: var(--color-button-text-active);
