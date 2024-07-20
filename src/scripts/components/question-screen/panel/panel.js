@@ -59,7 +59,7 @@ export default class Panel {
     }
 
     // Question text
-    const questionTextId = H5P.createUUID();
+    const questionTextId = `text-${H5P.createUUID()}`;
 
     this.questionText = document.createElement('div');
     this.questionText.classList.add('h5p-personality-quiz-question');

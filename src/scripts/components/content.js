@@ -119,7 +119,7 @@ export default class Content {
           return {
             text: personality.name,
             image: personality.image,
-            uuid: H5P.createUUID()
+            uuid: `personality-${H5P.createUUID()}`
           };
         }),
         l10n: {
