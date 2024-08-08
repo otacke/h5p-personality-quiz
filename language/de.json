@@ -44,8 +44,7 @@
                     "description": "Optionales Bild, das auf dem Ergebnisbildschirm angezeigt werden soll."
                   },
                   {
-                    "label": "Dummy",
-                    "description": "Dummy"
+                    "label": "Dummy"
                   }
                 ]
               }
@@ -110,7 +109,7 @@
                       "fields": [
                         {
                           "label": "Bild",
-                          "description": "Optionales Bild. Alle Optionen für diese Frage benötigen ein Bild, damit sie angezeigt werden."
+                          "description": "Optionales Bild. Alle Optionen für diese Frage benötigen ein Bild, damit sie angezeigt werden. Im Chat-Modus werden keine Bilder angezeigt."
                         },
                         {
                           "label": "Alternativer Text",
@@ -192,13 +191,11 @@
         },
         {
           "label": "Basisfarbe",
-          "description": "Wählte die Basisfarbe, aus der die Farbe für Buttons, für deren Füllanimationen und einige andere Dinge abgeleitet werden soll.",
-          "default": "#1a73d9"
+          "description": "Wählte die Basisfarbe, aus der die Farbe für Buttons, für deren Füllanimationen und einige andere Dinge abgeleitet werden soll."
         },
         {
           "label": "Farbe für Fortschrittsbalken",
-          "description": "Wähle die Farbe des Fortschrittsbalkens.",
-          "default": "#1a73d9"
+          "description": "Wähle die Farbe des Fortschrittsbalkens."
         }
       ]
     },

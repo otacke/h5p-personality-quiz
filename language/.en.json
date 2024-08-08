@@ -44,8 +44,7 @@
                     "description": "Optional image to display on the result screen."
                   },
                   {
-                    "label": "Dummy",
-                    "description": "Dummy"
+                    "label": "Dummy"
                   }
                 ]
               }
@@ -109,7 +108,7 @@
                       "fields": [
                         {
                           "label": "Image",
-                          "description": "Optional image. All options for this question need an image in order to show up."
+                          "description": "Optional image. All options for this question need an image in order to show up. No images will be shown in chat mode."
                         },
                         {
                           "label": "Alternative text",
@@ -191,13 +190,11 @@
         },
         {
           "label": "Base color",
-          "description": "Set the base color that will determine the color for the buttons, the button fill animations and some other visual elements.",
-          "default": "#1a73d9"
+          "description": "Set the base color that will determine the color for the buttons, the button fill animations and some other visual elements."
         },
         {
           "label": "Progressbar Color",
-          "description": "Set the color of the progress bar.",
-          "default": "#1a73d9"
+          "description": "Set the color of the progress bar."
         }
       ]
     },
