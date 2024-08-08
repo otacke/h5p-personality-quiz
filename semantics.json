@@ -479,7 +479,7 @@
       },
       {
         "name": "standby",
-        "label": "\"Stand\" by message",
+        "label": "\"Stand by\" message",
         "type": "text",
         "default": "Stand by."
       }

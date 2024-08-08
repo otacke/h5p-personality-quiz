@@ -256,6 +256,10 @@
         {
           "label": "Ergebnistitel",
           "default": "Hier sind deine Ergebnisse."
+        },
+        {
+          "label": "\"Bitte warten\"-Meldung",
+          "default": "Bitte warten."
         }
       ]
     }
