@@ -376,7 +376,7 @@ export default class WheelOfFortune {
     const backgroundColor = Color(params.fillColor)
       .mix(Color('#ffffff'), params.whiteValue);
 
-    if (params.image) {
+    if (Object.keys(params.image ?? {}).length) {
       segment.setAttribute('fill', `url(#wheel-of-fortune-segment-image-${params.uuid})`);
     }
     else {
@@ -385,7 +385,7 @@ export default class WheelOfFortune {
 
     group.append(segment);
 
-    if (!params.image && params.text) {
+    if (!Object.keys(params.image ?? {}).length && params.text) {
       const text = document.createElement('text');
       text.setAttribute('x',
         WheelOfFortune.INDICATOR_RADIUS + WheelOfFortune.LABEL_OFFSET
