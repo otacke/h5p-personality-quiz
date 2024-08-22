@@ -390,7 +390,7 @@ export default class WheelOfFortune {
       text.setAttribute('x',
         WheelOfFortune.INDICATOR_RADIUS + WheelOfFortune.LABEL_OFFSET
       );
-      text.setAttribute('y', `${WheelOfFortune.LABEL_LABEL_TEXT_SIZE_PX / 4}`);
+      text.setAttribute('y', `${4}`);
       text.innerText = params.text;
       text.style.font = `${WheelOfFortune.LABEL_TEXT_SIZE_PX}px sans-serif`;
 
