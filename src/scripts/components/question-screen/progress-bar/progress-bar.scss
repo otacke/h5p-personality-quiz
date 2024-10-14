@@ -1,8 +1,8 @@
-@import "@styles/main";
+@use "@styles/main";
 
 .progress-bar {
   background-color: var(--color-background);
-  box-shadow: 10px 10px 30px $color-shadow-light;
+  box-shadow: 10px 10px 30px main.$color-shadow-light;
   content: "";
   color: var(--color-text);
   height: 2rem;

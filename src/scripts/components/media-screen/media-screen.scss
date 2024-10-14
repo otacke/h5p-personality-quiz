@@ -1,8 +1,8 @@
-@import "@styles/main";
+@use "@styles/main";
 
 .media-screen {
   align-items: center;
-  background: $color-background;
+  background: main.$color-background;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@
   }
 
   .media-screen-image {
-    box-shadow: 10px 4px 47px 0 $color-shadow-dark;
+    box-shadow: 10px 4px 47px 0 main.$color-shadow-dark;
     height: 100%;
     left: 50%;
     position: absolute;
@@ -81,8 +81,8 @@
   }
 
   .media-screen-introduction {
-    color: $color-text;
-    text-decoration: none solid $color-text;
+    color: main.$color-text;
+    text-decoration: none solid main.$color-text;
 
     &.display-none {
       display: none;
