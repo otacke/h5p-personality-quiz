@@ -2,6 +2,21 @@ import Util from '@services/util.js';
 import Option from './option.js';
 import './panel.scss';
 
+/** @constant {number} DELAY_PER_CHAR_MS Time to delay showing the question per character. */
+const DELAY_PER_CHAR_MS = 40;
+
+/** @constant {number} MAX_DELAY_TYPING_ANIMATION_MS Maximum time to delay showing the question. */
+const MAX_DELAY_TYPING_ANIMATION_MS = 2500;
+
+/** @constant {number} DELAY_FOR_ANSWER_OPTIONS_S Time to delay showing the answer options. */
+const DELAY_FOR_ANSWER_OPTIONS_MS = 1000;
+
+/** @constant {number} NUMBER_OF_DOTS Number of dots for typing animation. */
+const NUMBER_OF_DOTS = 3;
+
+/** @constant {number} FOCUS_JUMP_TIMEOUT_MS Time to wait before setting focus to prevent jumping. */
+const FOCUS_JUMP_TIMEOUT_MS = 50;
+
 export default class Panel {
 
   /**
@@ -21,14 +36,14 @@ export default class Panel {
     this.params = Util.extend({
       appearance: 'classic',
       questionText: '',
-      answerOptions: []
+      answerOptions: [],
     }, params);
 
     this.params.questionText = Util.purifyHTML(this.params.questionText);
 
     this.callbacks = Util.extend({
       onAnswerGiven: () => {},
-      onCompleted: () => {}
+      onCompleted: () => {},
     }, callbacks);
 
     this.isVisibleState = true;
@@ -53,7 +68,7 @@ export default class Panel {
         this.params.globals.get('resize')();
       });
       H5P.setSource(
-        image, this.params.image.file, this.params.globals.get('contentId')
+        image, this.params.image.file, this.params.globals.get('contentId'),
       );
       this.dom.append(image);
     }
@@ -71,7 +86,7 @@ export default class Panel {
       this.typingDots.classList.add('typing-animation-dots');
       this.questionText.append(this.typingDots);
 
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < NUMBER_OF_DOTS; i++) {
         const typingDot = document.createElement('div');
         typingDot.classList.add('typing-animation-dot');
         this.typingDots.append(typingDot);
@@ -114,7 +129,7 @@ export default class Panel {
           mode: mode,
           text: option.text,
           image: option.image,
-          animation: this.params.animation
+          animation: this.params.animation,
         },
         {
           onClicked: () => {
@@ -123,8 +138,8 @@ export default class Panel {
           },
           onCompleted: () => {
             this.handleOptionCompleted(index);
-          }
-        }
+          },
+        },
       );
 
       this.options.push(optionInstance);
@@ -155,8 +170,8 @@ export default class Panel {
       !params.showInstantly && this.params.appearance === 'chat'
     ) {
       const delayTypingAnimation = Math.min(
-        this.params.questionText.length * Panel.DELAY_PER_CHAR_MS,
-        Panel.MAX_DELAY_TYPING_ANIMATION_MS
+        this.params.questionText.length * DELAY_PER_CHAR_MS,
+        MAX_DELAY_TYPING_ANIMATION_MS,
       );
 
       this.params.globals.get('resize')();
@@ -170,10 +185,10 @@ export default class Panel {
           if (params.focus) {
             window.setTimeout(() => {
               this.focus();
-            }, 50); // Prevent jumping if focus called before resize
+            }, FOCUS_JUMP_TIMEOUT_MS); // Prevent jumping if focus called before resize
           }
 
-        }, Panel.DELAY_FOR_ANSWER_OPTIONS_MS);
+        }, DELAY_FOR_ANSWER_OPTIONS_MS);
       }, delayTypingAnimation);
     }
     else {
@@ -230,7 +245,7 @@ export default class Panel {
     this.options.forEach((option, index) => {
       option.reset({
         disabled: typeof params.optionChosen === 'number',
-        selected: params.optionChosen === index
+        selected: params.optionChosen === index,
       });
     });
   }
@@ -254,12 +269,3 @@ export default class Panel {
     this.callbacks.onCompleted();
   }
 }
-
-/** @constant {number} DELAY_PER_CHAR_MS Time to delay showing the question per character. */
-Panel.DELAY_PER_CHAR_MS = 40;
-
-/** @constant {number} MAX_DELAY_TYPING_ANIMATION_MS Maximum time to delay showing the question. */
-Panel.MAX_DELAY_TYPING_ANIMATION_MS = 2500;
-
-/** @constant {number} DELAY_FOR_ANSWER_OPTIONS_S Time to delay showing the answer options. */
-Panel.DELAY_FOR_ANSWER_OPTIONS_MS = 1000;

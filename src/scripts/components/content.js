@@ -11,7 +11,7 @@ export default class Content {
     this.params = Util.extend({
       personalities: [],
       questions: [],
-      previousState: {}
+      previousState: {},
     }, params);
 
     // Compute score matrix
@@ -28,7 +28,7 @@ export default class Content {
 
           return {
             personalityIndex: personalityIndex,
-            score: score
+            score: score,
           };
         });
       });
@@ -68,7 +68,7 @@ export default class Content {
     if (!this.params.personalities.length) {
       this.messageBoxHint = new MessageBoxHint();
       this.messageBoxHint.setText(
-        this.params.dictionary.get('l10n.noPersonalities')
+        this.params.dictionary.get('l10n.noPersonalities'),
       );
       this.dom.append(this.messageBoxHint.getDOM());
 
@@ -78,7 +78,7 @@ export default class Content {
     if (!this.params.questions.length) {
       this.messageBoxHint = new MessageBoxHint();
       this.messageBoxHint.setText(
-        this.params.dictionary.get('l10n.noQuestions')
+        this.params.dictionary.get('l10n.noQuestions'),
       );
       this.dom.append(this.messageBoxHint.getDOM());
 
@@ -94,7 +94,7 @@ export default class Content {
         questions: this.params.questions,
         colorProgressBar: this.params.colorProgressBar,
         isAnimationOn: this.params.isAnimationOn,
-        showProgressBar: this.params.showProgressBar
+        showProgressBar: this.params.showProgressBar,
       },
       {
         onAnswerGiven: (params) => {
@@ -102,8 +102,8 @@ export default class Content {
         },
         onCompleted: () => {
           this.handleCompleted();
-        }
-      }
+        },
+      },
     );
     this.questionScreen.hide();
     this.dom.append(this.questionScreen.getDOM());
@@ -119,15 +119,15 @@ export default class Content {
           return {
             text: personality.name,
             image: personality.image,
-            uuid: `personality-${H5P.createUUID()}`
+            uuid: `personality-${H5P.createUUID()}`,
           };
         }),
         l10n: {
-          skip: this.params.dictionary.get('l10n.skip')
+          skip: this.params.dictionary.get('l10n.skip'),
         },
         a11y: {
-          started: this.params.dictionary.get('a11y.wheelStarted')
-        }
+          started: this.params.dictionary.get('a11y.wheelStarted'),
+        },
       });
       this.wheelOfFortune.hide();
       this.dom.append(this.wheelOfFortune.getDOM());
@@ -144,18 +144,18 @@ export default class Content {
         introduction: this.params.titleScreen.titleScreenIntroduction,
         medium: this.params.titleScreen.titleScreenMedium,
         buttons: [
-          { id: 'start', text: this.params.dictionary.get('l10n.start') }
+          { id: 'start', text: this.params.dictionary.get('l10n.start') },
         ],
         a11y: {
-          screenOpened: this.params.dictionary.get('a11y.titleScreenWasOpened')
-        }
+          screenOpened: this.params.dictionary.get('a11y.titleScreenWasOpened'),
+        },
       }, {
         onButtonClicked: () => {
           this.handleTitleScreenClosed();
         },
         onRead: (text) => {
           this.params.globals.get('read')(text);
-        }
+        },
       });
 
       this.startScreen.hide();
@@ -171,17 +171,17 @@ export default class Content {
         globals: this.params.globals,
         l10n: {
           notFinished: this.params.dictionary.get('l10n.notFinished'),
-          reset: this.params.dictionary.get('l10n.reset')
+          reset: this.params.dictionary.get('l10n.reset'),
         },
         a11y: {
-          resultsTitle: this.params.dictionary.get('a11y.resultsTitle')
-        }
+          resultsTitle: this.params.dictionary.get('a11y.resultsTitle'),
+        },
       },
       {
         onReset: () => {
           this.reset({ focus: true });
-        }
-      }
+        },
+      },
     );
     this.resultScreen.hide();
     this.dom.append(this.resultScreen.getDOM());
@@ -210,7 +210,7 @@ export default class Content {
     return {
       scores: this.scores,
       answersGiven: this.answersGiven,
-      ...(results && { results: results })
+      ...(results && { results: results }),
     };
   }
 
@@ -248,7 +248,7 @@ export default class Content {
   handleTitleScreenClosed() {
     this.questionScreen.show({
       answersGiven: this.answersGiven,
-      focus: true
+      focus: true,
     });
 
     this.params.globals.get('resize')();
@@ -268,7 +268,7 @@ export default class Content {
 
     this.answersGiven.push({
       question: params.questionIndex,
-      option: params.optionIndex
+      option: params.optionIndex,
     });
 
     if (this.answersGiven.length < this.params.questions.length) {
@@ -369,7 +369,7 @@ export default class Content {
       this.resultScreen.setContent(
         this.params.personalities.find((personality) => {
           return personality.name === this.params.previousState.results;
-        })
+        }),
       );
     }
 
@@ -380,7 +380,7 @@ export default class Content {
       this.questionScreen.show({
         answersGiven: this.answersGiven,
         focus: params.focus,
-        showInstantly: params.showInstantly
+        showInstantly: params.showInstantly,
       });
     }
     else if (
@@ -389,19 +389,19 @@ export default class Content {
     ) {
       this.questionScreen.show({
         answersGiven: this.answersGiven,
-        focus: params.focus
+        focus: params.focus,
       });
     }
     else if (this.params.titleScreen && this.answersGiven.length === 0) {
       this.startScreen.show({
         focusButton: params.focus,
-        readOpened: params.focus
+        readOpened: params.focus,
       });
     }
     else if (this.answersGiven.length !== this.params.questions.length) {
       this.questionScreen.show({
         answersGiven: this.answersGiven,
-        focus: !!params.focus
+        focus: !!params.focus,
       });
     }
     else {

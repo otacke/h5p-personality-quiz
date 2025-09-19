@@ -22,11 +22,11 @@ export default class ProgressBar {
       valueMax: 1,
       baseColor: '#1a73d9',
       l10n: {
-        currentOfTotal: '@current of @total'
+        currentOfTotal: '@current of @total',
       },
       a11y: {
         progressBar: 'Progress bar',
-      }
+      },
     }, params);
 
     // Build DOM
@@ -106,7 +106,7 @@ export default class ProgressBar {
       .replace(/@total/g, this.params.valueMax);
 
     this.dom.style.setProperty(
-      '--bar-width', progress / this.params.valueMax * 100
+      '--bar-width', progress / this.params.valueMax * 100,
     );
     this.dom.setAttribute('aria-valuenow', progress);
 

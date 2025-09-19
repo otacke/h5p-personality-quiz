@@ -16,12 +16,12 @@ export default class QuestionScreen {
    */
   constructor(params = {}, callbacks = {}) {
     this.params = Util.extend({
-      questions: [{}]
+      questions: [{}],
     }, params);
 
     this.callbacks = Util.extend({
       onAnswerGiven: () => {},
-      onCompleted: () => {}
+      onCompleted: () => {},
     }, callbacks);
 
     this.buildDOM();
@@ -41,11 +41,11 @@ export default class QuestionScreen {
       baseColor: this.params.colorProgressBar,
       isAnimated: this.params.isAnimationOn,
       l10n: {
-        currentOfTotal: this.params.dictionary.get('l10n.currentOfTotal')
+        currentOfTotal: this.params.dictionary.get('l10n.currentOfTotal'),
       },
       a11y: {
-        progressbar: this.params.dictionary.get('a11y.progressBar')
-      }
+        progressbar: this.params.dictionary.get('a11y.progressBar'),
+      },
     });
     if (!this.params.showProgressBar) {
       this.progressBar.hide();
@@ -62,18 +62,18 @@ export default class QuestionScreen {
         image: question.image,
         questionText: question.text,
         answerOptions: question.answers,
-        animation: this.params.isAnimationOn
+        animation: this.params.isAnimationOn,
       },
       {
         onAnswerGiven: (optionIndex) => {
           this.callbacks.onAnswerGiven({
             questionIndex: questionIndex,
-            optionIndex: optionIndex
+            optionIndex: optionIndex,
           });
         },
         onCompleted: () => {
           this.handlePanelCompleted(questionIndex);
-        }
+        },
       });
 
       panel.hide();
@@ -122,13 +122,13 @@ export default class QuestionScreen {
       else if (this.params.appearance === 'chat' && index < lastQuestionIndex) {
         panel.show({
           showInstantly: true,
-          focus: false
+          focus: false,
         });
       }
       else if (this.params.appearance === 'chat' && index === lastQuestionIndex) {
         panel.show({
           showInstantly: params.showInstantly,
-          focus: params.focus
+          focus: params.focus,
         });
       }
       else {

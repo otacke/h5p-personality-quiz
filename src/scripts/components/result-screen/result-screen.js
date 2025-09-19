@@ -16,15 +16,15 @@ export default class ResultScreen {
     this.params = Util.extend({
       l10n: {
         notFinished: 'The quiz was not yet finished',
-        reset: 'Retake the quiz'
+        reset: 'Retake the quiz',
       },
       a11y: {
         resultsTitle: 'Here are your results.',
-      }
+      },
     }, params);
 
     this.callbacks = Util.extend({
-      onReset: () => {}
+      onReset: () => {},
     }, callbacks);
 
     this.ariaText = '';
@@ -42,20 +42,20 @@ export default class ResultScreen {
 
     this.explanation = document.createElement('div');
     this.explanation.classList.add(
-      'h5p-personality-quiz-result-screen-explanation'
+      'h5p-personality-quiz-result-screen-explanation',
     );
     this.explanation.classList.add('display-none');
 
     this.title = document.createElement('p');
     this.title.classList.add(
-      'h5p-personality-quiz-result-screen-explanation-title'
+      'h5p-personality-quiz-result-screen-explanation-title',
     );
     this.title.classList.add('display-none');
     this.explanation.append(this.title);
 
     this.imageInline = document.createElement('img');
     this.imageInline.classList.add(
-      'h5p-personality-quiz-result-screen-explanation-image-inline'
+      'h5p-personality-quiz-result-screen-explanation-image-inline',
     );
     this.imageInline.classList.add('display-none');
     this.imageInline.addEventListener('load', () => {
@@ -66,7 +66,7 @@ export default class ResultScreen {
 
     this.description = document.createElement('p');
     this.description.classList.add(
-      'h5p-personality-quiz-result-screen-explanation-description'
+      'h5p-personality-quiz-result-screen-explanation-description',
     );
     this.description.classList.add('display-none');
     this.explanation.append(this.description);
@@ -157,7 +157,7 @@ export default class ResultScreen {
     ) {
       const image = document.createElement('img');
       H5P.setSource(
-        image, params.image.file, this.params.globals.get('contentId')
+        image, params.image.file, this.params.globals.get('contentId'),
       );
       this.dom.style.backgroundImage = `url("${image.src}")`;
     }
@@ -186,7 +186,7 @@ export default class ResultScreen {
     ) {
       const image = document.createElement('img');
       H5P.setSource(
-        image, params.image.file, this.params.globals.get('contentId')
+        image, params.image.file, this.params.globals.get('contentId'),
       );
       this.imageInline.src = image.src;
       this.imageInline.classList.remove('display-none');
@@ -229,7 +229,7 @@ export default class ResultScreen {
     return {
       personality: this.resultPersonality,
       description: this.resultDescription,
-      image: this.image
+      image: this.image,
     };
   }
 }

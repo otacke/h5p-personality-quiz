@@ -9,6 +9,15 @@ import XAPI from '@mixins/xapi.js';
 import Color from 'color';
 import '@styles/h5p-personality-quiz.scss';
 
+/** @constant {number} DIFF_FACTOR_HOVER Factor to lighten/darken color on hover. */
+const DIFF_FACTOR_HOVER = 0.25;
+
+/** @constant {number} DIFF_FACTOR_ACTIVE Factor to lighten/darken color on active. */
+const DIFF_FACTOR_ACTIVE = 0.37;
+
+/** @constant {number} DIFF_FACTOR_PALE Factor to lighten/darken color for pale version. */
+const DIFF_FACTOR_PALE = 0.9;
+
 export default class PersonalityQuiz extends H5P.EventDispatcher {
   /**
    * @class
@@ -24,40 +33,41 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
     // Sanitize parameters
     this.params = Util.extend({
       titleScreen: {
-        title: {}
+        title: {},
       },
       questionsGroup: {
-        questions: []
+        questions: [],
       },
       personalitiesGroup: {
-        personalities: []
+        personalities: [],
       },
       visual: {
         isAnimationOn: true,
         showProgressBar: true,
         appearance: 'classic',
         colorButton: '#1a73d9',
-        colorProgressBar: '#1a73d9'
+        colorProgressBar: '#1a73d9',
       },
       l10n: {
         noQuestions: 'It seems that there is no valid question set. Try checking for valid personality names.',
+        // eslint-disable-next-line @stylistic/js/max-len
         noPersonalities: 'It seems that there are not enough valid personalities set. Try checking for missing names or duplicate names.',
         start: 'Start',
         currentOfTotal: '@current of @total',
         skip: 'Skip',
         reset: 'Restart',
-        notFinished: 'The quiz was not finished yet.'
+        notFinished: 'The quiz was not finished yet.',
       },
       a11y: {
         titleScreenWasOpened: 'The title screen was opened.',
         wheelStarted: 'The wheel of fortune started spinning. Please wait a moment.',
         progressBar: 'Progress bar',
         resultsTitle: 'Here are your results.',
-        standby: 'Stand by.'
+        standby: 'Stand by.',
       },
       behaviour: {
-        delegateResults: false // Used for external override
-      }
+        delegateResults: false, // Used for external override
+      },
     }, params);
 
     // Override result screen animation if required
@@ -148,10 +158,10 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
             titleScreenIntroduction:
               this.params.titleScreen.titleScreenIntroduction,
             titleScreenMedium:
-              this.params.titleScreen.titleScreenMedium
-          }
+              this.params.titleScreen.titleScreenMedium,
+          },
         }
-      )
+      ),
     });
 
     this.on('resize', () => {
@@ -182,18 +192,18 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
       '#000000';
 
     const colorHover = (colorBase.isDark()) ?
-      colorBase.darken(0.25) :
-      colorBase.lighten(0.25);
+      colorBase.darken(DIFF_FACTOR_HOVER) :
+      colorBase.lighten(DIFF_FACTOR_HOVER);
 
     const colorActive = (colorBase.isDark()) ?
-      colorBase.darken(0.37) :
-      colorBase.lighten(0.37);
+      colorBase.darken(DIFF_FACTOR_ACTIVE) :
+      colorBase.lighten(DIFF_FACTOR_ACTIVE);
 
     const colorTextActive = (colorActive.isDark()) ?
       '#ffffff' :
       '#000000';
 
-    const colorPale = colorBase.mix(Color('#ffffff'), 0.9);
+    const colorPale = colorBase.mix(Color('#ffffff'), DIFF_FACTOR_PALE);
 
     this.dom.style.setProperty('--color-button-background', colorBase.hex());
     this.dom.style.setProperty('--color-button-text', colorText);
@@ -236,7 +246,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
 
     return {
       type: 'question',
-      value: position
+      value: position,
     };
   }
 
@@ -247,7 +257,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
   getResults() {
     return {
       title: this.extras.metadata.title,
-      ...this.content?.getResults()
+      ...this.content?.getResults(),
     };
   }
 
@@ -258,7 +268,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
   getTitle() {
     // H5P Core function: createTitle
     return H5P.createTitle(
-      this.extras?.metadata?.title || PersonalityQuiz.DEFAULT_DESCRIPTION
+      this.extras?.metadata?.title || PersonalityQuiz.DEFAULT_DESCRIPTION,
     );
   }
 

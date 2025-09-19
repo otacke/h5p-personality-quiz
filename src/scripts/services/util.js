@@ -34,14 +34,17 @@ export default class Util {
    * @returns {number} Eased-in/out value.
    */
   static easeInOutQuad(time, start, delta, duration) {
+    // eslint-disable-next-line no-magic-numbers
     time = time / (duration / 2);
 
     if (time < 1) {
+      // eslint-disable-next-line no-magic-numbers
       return delta / 2 * time * time + start;
     }
 
     time--;
 
+    // eslint-disable-next-line no-magic-numbers
     return -delta / 2 * (time * (time - 2) - 1) + start;
   }
 

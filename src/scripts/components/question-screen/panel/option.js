@@ -20,14 +20,14 @@ export default class Option {
       appearance: 'classic',
       mode: 'text',
       text: '\u3164', // Invisible but has height.
-      image: {}
+      image: {},
     }, params);
 
     this.params.text = Util.purifyHTML(this.params.text);
 
     this.callbacks = Util.extend({
       onClicked: () => {},
-      onCompleted: () => {}
+      onCompleted: () => {},
     }, callbacks);
 
     if (this.params.appearance === 'chat') {
@@ -78,7 +78,7 @@ export default class Option {
         this.params.globals.get('resize')();
       });
       H5P.setSource(
-        image, this.params.image.file, this.params.globals.get('contentId')
+        image, this.params.image.file, this.params.globals.get('contentId'),
       );
       this.button.append(image);
     }
@@ -86,7 +86,7 @@ export default class Option {
     // Button text
     this.buttonText = document.createElement('span');
     this.buttonText.classList.add(
-      'h5p-personality-quiz-answer-option-button-text'
+      'h5p-personality-quiz-answer-option-button-text',
     );
     this.buttonText.innerText = this.params.text;
     this.button.append(this.buttonText);
