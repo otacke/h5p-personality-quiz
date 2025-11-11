@@ -1,6 +1,5 @@
 import Util from '@services/util.js';
 import Dictionary from '@services/dictionary.js';
-import Globals from '@services/globals.js';
 import Screenreader from '@services/screenreader.js';
 import Content from '@components/content.js';
 import QuestionTypeContract from '@mixins/question-type-contract.js';
@@ -84,7 +83,7 @@ export default class PersonalityQuiz extends H5P.EventDispatcher {
     document.body.append(Screenreader.getDOM());
 
     // Globals
-    this.globals = new Globals();
+    this.globals = new Map();
     this.globals.set('contentId', this.contentId);
     this.globals.set('resize', () => {
       this.trigger('resize');
