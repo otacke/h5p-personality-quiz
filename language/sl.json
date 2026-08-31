@@ -1,0 +1,265 @@
+{
+  "semantics": [
+    {
+      "label": "Pokaži začetni zaslon",
+      "description": "Na začetnem zaslonu je prikazan kratek opis aktivnosti."
+    },
+    {
+      "label": "Začetni zaslon",
+      "fields": [
+        {
+          "label": "Uvod v aktivnost"
+        },
+        {
+          "label": "Multimedijska vsebina"
+        }
+      ]
+    },
+    {
+      "label": "Osebnosti",
+      "fields": [
+        {
+          "label": "Osebnost",
+          "widgets": [
+            {
+              "label": "Privzeto"
+            }
+          ],
+          "entity": "osebnost",
+          "field": {
+            "label": "Osebnost",
+            "fields": [
+              {
+                "label": "Ime osebnosti",
+                "description": "Ime bo uporabljeno za povezovanje odgovorov z dodeljenimi tipi osebnosti."
+              },
+              {
+                "label": "Opis"
+              },
+              {
+                "label": "Slika",
+                "fields": [
+                  {
+                    "label": "Slika",
+                    "description": "Neobvezna slika za končni zaslon."
+                  },
+                  {
+                    "label": "Nadomestno besedilo",
+                    "description": "Informacija za bralnike zaslona."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Vzorec"
+        }
+      ]
+    },
+    {
+      "label": "Vprašanja",
+      "fields": [
+        {
+          "label": "Vprašanja",
+          "widgets": [
+            {
+              "label": "Privzeto"
+            }
+          ],
+          "entity": "vprašanje",
+          "field": {
+            "label": "Vprašanje",
+            "fields": [
+              {
+                "label": "Vprašanje"
+              },
+              {
+                "label": "Slika",
+                "fields": [
+                  {
+                    "label": "Slika",
+                    "description": "Neobvezna slika je prikazana nad vprašanjem."
+                  },
+                  {
+                    "label": "Nadomestno besedilo",
+                    "description": "Informacija za bralnike zaslona."
+                  }
+                ]
+              },
+              {
+                "label": "Odgovori",
+                "entity": "odgovor",
+                "field": {
+                  "label": "Odgovor",
+                  "fields": [
+                    {
+                      "label": "Besedilo odgovora"
+                    },
+                    {
+                      "label": "Osebnost",
+                      "description": "Z odgovorom povezana imena osebnosti, ki so med seboj ločena z vejico.",
+                      "importantDescription": {
+                        "description": "<ul><li>Zapišite ime osebnosti, ki naj ob izbiri prejme vrednost +1.</li><li>Osebnostim lahko določite tudi drugo vrednost, in sicer z vključitvijo enačaja (=) in zapisom matematične vrednosti.</li><li>Imena osebnosti morajo biti ločena z vejico (,).</li></ul>",
+                        "example": "jabolko, mango=4, jagoda=-1"
+                      }
+                    },
+                    {
+                      "label": "Slika",
+                      "fields": [
+                        {
+                          "label": "Slika",
+                          "description": "Neobvezna slika. Prikazana bo, če je slika dodana tudi pri drugih odgovorih na to vprašanje."
+                        },
+                        {
+                          "label": "Nadomestno besedilo",
+                          "description": "Informacija za bralnike zaslona."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "label": "Vzorec"
+        }
+      ]
+    },
+    {
+      "label": "Končni zaslon",
+      "fields": [
+        {
+          "label": "Animacija",
+          "description": "Kolo sreče bo prikazano le, če so slike dodane pri vseh tipih osebnosti.",
+          "options": [
+            {
+              "label": "Brez"
+            },
+            {
+              "label": "Pojavitev"
+            },
+            {
+              "label": "Kolo sreče"
+            }
+          ]
+        },
+        {
+          "label": "Prikaži tip osebnosti"
+        },
+        {
+          "label": "Prikaži opis tipa osebnosti"
+        },
+        {
+          "label": "Pozicija slike tipa osebnosti",
+          "description": "Določa pozicijo slike glede na opis tipa osebnosti.",
+          "options": [
+            {
+              "label": "V ozadju"
+            },
+            {
+              "label": "V vrstici z besedilom"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Vizualizacija",
+      "fields": [
+        {
+          "label": "Prikaži animacije",
+          "description": "Omogoči prikaz animacij v kvizu."
+        },
+        {
+          "label": "Prikaži indikator napredka",
+          "description": "Omogoči prikaz indikatorja napredka."
+        },
+        {
+          "label": "Vizualna podoba",
+          "description": "Nastavitve vplivajo na izgled kviza.",
+          "options": [
+            {
+              "label": "Klasičen"
+            },
+            {
+              "label": "Klepetalnica"
+            }
+          ]
+        },
+        {
+          "label": "Barva gumbov",
+          "description": "Določi barvo obrobe gumbov in barvo polnila animacij v kvizu.",
+          "default": "#1a73d9"
+        },
+        {
+          "label": "Barva indikatorja napredka",
+          "description": "Določi barvo indikatorja napredka.",
+          "default": "#1a73d9"
+        }
+      ]
+    },
+    {
+      "label": "Nastavitve interakcije",
+      "fields": [
+        {
+          "label": "Premalo veljavnih vprašanj",
+          "default": "Izgleda, da ni vnesenih dovolj veljavnih vprašanj. Preverite veljavnost imen tipov osebnosti.",
+          "description": "Sporočilo ob nezadostnem naboru veljavnih vprašanj."
+        },
+        {
+          "label": "Premalo veljavnih tipov osebnosti",
+          "default": "Izgleda, da ni vnesenih dovolj veljavnih tipov osebnosti. Preverite imena tipov osebnosti (npr. manjkajoče osebnosti, duplikati).",
+          "description": "Sporočilo ob nezadostnem naboru veljavnih tipov osebnosti."
+        },
+        {
+          "label": "Besedilo gumba za začetek",
+          "default": "Začetek"
+        },
+        {
+          "label": "Besedilo indikatorja napredka",
+          "default": "@current od @total",
+          "description": "@current in @total sta spremenljivki."
+        },
+        {
+          "label": "Preskoči",
+          "default": "Preskoči",
+          "description": "Besedilo gumba \"Preskoči\"."
+        },
+        {
+          "label": "Poskusi ponovno",
+          "default": "Poskusi ponovno",
+          "description": "Besedilo gumba \"Poskusi ponovno\"."
+        },
+        {
+          "label": "Ni zaključeno",
+          "default": "Kviz še ni zaključen.",
+          "description": "Sporočilo ob prezgodnjem poskusu zaključka kviza."
+        }
+      ]
+    },
+    {
+      "label": "Dostopnost",
+      "fields": [
+        {
+          "label": "Začetek animacije kolesa sreče",
+          "default": "Kolo sreče se je zavrtelo. Prosim, počakajte trenutek."
+        },
+        {
+          "label": "Prikaz začetnega zaslona",
+          "default": "Prikazal se je začetni zaslon."
+        },
+        {
+          "label": "Indikator napredka",
+          "default": "Indikator napredka"
+        },
+        {
+          "label": "Naslov rezultatov",
+          "default": "Tukaj so vaši rezultati."
+        }
+      ]
+    }
+  ]
+}
